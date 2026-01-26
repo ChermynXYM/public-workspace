@@ -1,0 +1,44 @@
+\section{The Norm of a Vector}
+
+\bx{
+\en{
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    
+    \newpage
+
+    \item For any vectors $A, B$, prove the following relations:
+    \ea{
+        \item $\norm{A + B}^2 + \norm{A - B}^2 = 2 \norm{A}^2 + 2 \norm{B}^2$.
+        \begin{solution}
+        \begin{proof}
+            To prove this, we use the definitions, namely
+            \begin{equation*}
+                \begin{aligned}
+                \norm{A + B}^2 + \norm{A - B}^2 &= (A + B) \cdot (A + B) + (A - B) \cdot (A - B) \\
+                &= A^2 + 2 A \cdot B + B^2 + A^2 - 2 A \cdot B + B^2 \\
+                &= 2 A^2 + 2 B^2 \\
+                &= 2 \norm{A}^2 + 2 \norm{B}^2,
+                \end{aligned}
+            \end{equation*}
+            because $A^2 = \norm{A}^2$ and $B^2 = \norm{B}^2$ by definition. 
+            Then we conclude the proof.
+        \end{proof}
+    \end{solution}
+        \item $\norm{A + B}^2 = \norm{A}^2 + \norm{B}^2 + 2 A \cdot B$.
+        \item $\norm{A + B}^2 - \norm{A - B}^2 = 4 A \cdot B$.
+    }
+    Interpret (a) as a ``parallelogram law".
+    
+    \begin{solution}
+    Consider vectors $A$ and $B$ as adjacent sides of a parallelogram (with a common initial point). 
+    By definitions, $A + B$ and $A - B$ correspond to two diagonals of the parallelogram. 
+    Thus (a) means that the sum of the squares of the lengths of the two diagonals of a parallelogram equals twice the sum of the squares of the lengths of its adjacent sides, which is exactly the ``parallelogram law".
+    \end{solution}
+}
+}

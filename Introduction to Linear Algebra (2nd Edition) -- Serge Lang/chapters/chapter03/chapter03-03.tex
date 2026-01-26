@@ -1,0 +1,29 @@
+\section{Convex Sets}
+\bx{
+\en{
+    \item
+    \item 
+    Let $A$ be a non-zero vector in $\mathbf{R}^n$ and let $c$ be a fixed number. 
+    Show that the set of all elements $X$ in $\mathbf{R}^n$ such that $A \cdot X \geq c$ is convex. 
+    \begin{solution}
+        \begin{proof}
+            Let the set of all elements $X$ in $\mathbf{R}^n$ such that $A \cdot X \geq c$ be denoted by $S$. 
+
+            We wish to prove that $S$ is convex. 
+            Let $X_1$ and $X_2$ be points in $S$, then a point between them can be written as
+            \begin{equation*}
+                (1-t)X_1 + tX_2. 
+            \end{equation*}
+            Hence
+            \begin{equation*}
+                \begin{aligned}
+                A \cdot [(1-t)X_1 + tX_2] 
+                &= (1-t)(A \cdot X_1) + t(A \cdot X_2) \\
+                &\geq (1-t)c + tc \\
+                &= c
+                \end{aligned}
+            \end{equation*}
+            This proves that $(1-t)X_1 + tX_2$ is in the set $S$, which is therefore convex. 
+        \end{proof}
+    \end{solution}
+}}

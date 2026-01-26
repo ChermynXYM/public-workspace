@@ -1,0 +1,194 @@
+\section{Diagonalization of a Symmetric Linear Map} 
+\bx{
+\en{
+    \item 
+    \item 
+    \item 
+    Let $V$ be a finite dimensional vector space with a positive definite scalar product. 
+    Let $A: V \to V$ be a symmetric linear map. 
+    We say that $A$ is \textbf{positive definite} if $\langle Av, v \rangle > 0$ for all $v \in V$ and $v \neq O$. 
+    Prove: 
+    \ea{
+        \item 
+        If $A$ is positive definite, then all eigenvalues are $> 0$. 
+        \item 
+        If $A$ is positive definite, then there exists a symmetric linear map $B$ such that $B^2 = A$ and $BA = AB$. 
+        What are the eigenvalues of $B$? 
+        [\textit{Hint}: Use a basis of $V$ consisting of eigenvectors.] 
+    }
+    \begin{Solution}
+        \ea{
+            \item 
+            \begin{proof}
+                Let $v$ be an eigenvector $\neq O$ with eigenvalue $\lambda$. 
+                Then $\langle Av, v \rangle = \langle \lambda v, v \rangle = \lambda \langle v, v \rangle$. 
+                Since $\langle v, v \rangle > 0$ and $\langle Av, v \rangle > 0$, it follows that $\lambda > 0$. 
+            \end{proof}
+            \item 
+            \begin{proof}
+                Pick a basis of $V$ consisting of eigenvectors. 
+                The vector space $V$ can then be identified as the space of coordinate vectors with respect to this basis. 
+                The matrix of $A$ then is a diagonal matrix, whose diagonal elements are the eigenvalues, and are therefore positive. 
+                We can then let $B$ have diagonal elements equal to the square roots of those of $A$. 
+            \end{proof}
+        }
+    \end{Solution}
+
+    \item 
+    We say that $A$ is \textbf{positive semidefinite} if $\langle Av, v \rangle \geq 0$ for all $v \in V$. 
+    Prove the analogues of (a), (b) of Exercise 3 when $A$ is only assumed semidefinite. 
+    Thus the eigenvalues are $\geq 0$, and there exists a symmetric linear map $B$ such that $B^2 = A$. 
+    \begin{solution}
+        \ea{
+            \item 
+            \begin{proof}
+                Let $v$ be an eigenvector $\neq O$ with eigenvalue $\lambda$. 
+                Then $\langle Av, v \rangle = \langle \lambda v, v \rangle = \lambda \langle v, v \rangle$. 
+                Since $\langle v, v \rangle \geq 0$ and $\langle Av, v \rangle \geq 0$, it follows that $\lambda \geq 0$. 
+            \end{proof}
+            \item 
+            \begin{proof}
+                Pick a basis of $V$ consisting of eigenvectors. 
+                The vector space $V$ can then be identified as the space of coordinate vectors with respect to this basis. 
+                The matrix of $A$ then is a diagonal matrix, whose diagonal elements are the eigenvalues, and are therefore nonnegative. 
+                We can then let $B$ have diagonal elements equal to the square roots of those of $A$. 
+            \end{proof}
+        }
+    \end{solution}
+    \item 
+    Assume that $A$ is symmetric positive definite. 
+    Show that $A^2$ and $A^{-1}$ are symmetric positive definite. 
+    \begin{Solution}
+        \begin{proof}
+            From ${^{t\!}(AA)} = {^{t\!}A}{^{t\!}A} = AA$, it follows that $A^2$ is symmetric. 
+            Furthermore, for $v \neq O$, 
+            \begin{equation*}
+                \langle A^2 v, v \rangle = \langle Av, {^{t\!}A} v \rangle = \langle Av, Av \rangle > 0, 
+            \end{equation*}
+            because $Av \neq O$ since $\langle Av, v \rangle > 0$. 
+
+            Since ${^{t\!}A}^{-1} = A^{-1}$, it follows that $A^{-1}$ is symmetric. 
+            Since $A$ is invertible, a given $v$ can be written $v = Aw$ for some $w$ (namely $w = A^{-1}v$). 
+            Then 
+            \begin{equation*}
+                \langle A^{-1}v, v \rangle = \langle A^{-1}Aw, Aw \rangle = \langle w, Aw \rangle = \langle Aw, w \rangle > 0. 
+            \end{equation*}
+            Hence $A^{-1}$ is positive definite. 
+        \end{proof}
+    \end{Solution}
+    \item 
+    Let $U: \mathbf{R}^n \to \mathbf{R}^n$ be a linear map, and let $\langle \ , \ \rangle$ denote the usual scalar (dot) product. 
+    Show that the following conditions are equivalent: 
+    \er{
+        \item 
+        $\norm{Uv} = \norm{v}$ for all $v \in \mathbf{R}^n$. 
+        \item 
+        $\langle Uv, Uw \rangle = \langle v, w \rangle$ for all $v, w \in \mathbf{R}^n$. 
+        \item 
+        $U$ is invertible, and ${^{t\!}U} = U^{-1}$. 
+    }
+    [\textit{Hint}: For (ii), use the identity 
+    \begin{equation*}
+        \langle (v + w), (v + w) \rangle - \langle (v - w), (v - w) \rangle = 4\langle v, w \rangle, 
+    \end{equation*}
+    and similarly with a $U$ in front of each vector.] 
+    When $U$ satisfies any one (and hence all) of these conditions, then $U$ is called \textbf{unitary}. 
+    The first condition says that $U$ preserves the norm, and the second says that $U$ preserves the scalar product. 
+    \begin{Solution}
+        \begin{proof}
+            Assume (i).             
+            From the identity in the hint, we get 
+            \begin{equation*}
+                \begin{aligned}
+                    4 \langle Uv, Uw \rangle &= \langle U(v + w), U(v + w) \rangle - \langle U(v - w), U(v - w) \rangle \\
+                    &= \norm{U(v + w)}^2 - \norm{U(v - w)}^2 \\
+                    &= \norm{v + w}^2 - \norm{v - w}^2 \\
+                    &= \langle (v + w), (v + w) \rangle - \langle (v - w), (v - w) \rangle \\
+                    &= 4\langle v, w \rangle. 
+                \end{aligned}
+            \end{equation*}
+            Hence $\langle Uv, Uw \rangle = \langle v, w \rangle$. 
+            The converse is immediate. 
+
+            Assume (i). 
+            Then $\Ker U = O$ because if $Uv = O$ then $\norm{v} = 0$ so $v = O$. 
+            But a linear map with $O$ kernel from a finite dimensional vector space into itself is invertible, so $U$ is invertible. 
+            Also, for all $v, w \in V$, 
+            \begin{equation*}
+                \langle Uv, Uw \rangle = \langle v, {^{t\!}U}Uw \rangle \quad \text{and also equals} \quad \langle v, w \rangle \quad \text{by hypothesis}. 
+            \end{equation*}
+            Hence ${^{t\!}U}U = I$ so ${^{t\!}U} = U^{-1}$. Conversely, from ${^{t\!}U} = U^{-1}$ we get 
+            \begin{equation*}
+                \norm{Uv} = \langle Uv, Uv \rangle = \langle {^{t\!}U}Uv, v \rangle = \langle v, v \rangle = \norm{v}, 
+            \end{equation*}
+            so $U$ satrisfies (i). 
+        \end{proof}
+    \end{Solution}
+    \item 
+    Let $A: \mathbf{R}^n \to \mathbf{R}^n$ be an invertible linear map. 
+    \er{
+        \item 
+        Show that ${^{t\!}A}A$ is symmetric positive definite. 
+        \item 
+        By Exercise 3b, there is a symmetric positive definite $B$ such that $B^2 = {^{t\!}A}A$. 
+        Let $U = AB^{-1}$. 
+        Show that $U$ is unitary. 
+        \item 
+        Show that $A = UB$. 
+    }
+    \begin{Solution}
+        \er{
+            \item 
+            \begin{proof}
+                Since ${^{t\!}({^{t\!}A}A}) = {^{t\!}A}{^{t\!}{^{t\!}A}} = {^{t\!}A}A$, it follows that ${^{t\!}A}A$ is symmetric. 
+                Furthermore, for $v \neq O$, we have 
+                \begin{equation*}
+                    \langle {^{t\!}A}Av, v \rangle = \langle Av, Av \rangle > 0 
+                \end{equation*}
+                because $A$ is invertible, $Av \neq O$. 
+                Hence ${^{t\!}A}A$ is positive definite. 
+            \end{proof}
+            \item 
+            \begin{proof}
+                Let $U = AB^{-1}$ where $B^2 = {^{t\!}A}A$. 
+                Then 
+                \begin{equation*}
+                    \begin{aligned}
+                        \langle Uv, Uv \rangle &= \langle AB^{-1}v, AB^{-1}v \rangle \\
+                        &= \langle B^{-1}v, {^{t\!}A}AB^{-1}v \rangle \\
+                        &= \langle B^{-1}v, Bv \rangle \\
+                        &= \langle {^{t\!}B}B^{-1}v, v \rangle \\
+                        &= \langle v, v \rangle, 
+                    \end{aligned}
+                \end{equation*}
+                because $B$ is symmetric. 
+                Hence $U$ is unitary. 
+            \end{proof}
+            \item 
+            \begin{proof}
+                Since $U = AB^{-1}$, we have 
+                \begin{equation*}
+                    UB = AB^{-1}B 
+                \end{equation*}
+                and hence $A = UB$. 
+            \end{proof}
+        }
+    \end{Solution}
+    \item 
+    Let $B$ be symmetric positive definite and also unitary. 
+    Show that $B = I$. 
+    \begin{Solution}
+        \begin{proof}
+            Let $v$ be a non-zero eigenvector $\lambda > 0$. 
+            Then 
+            \begin{equation*}
+                \langle Bv, Bv \rangle = \lambda^2 \langle v, v \rangle = \langle v, v \rangle 
+            \end{equation*}
+            because $B$ is unitary. 
+            Hence $\lambda^2 = 1$. 
+            Hence $\lambda = \pm 1$, and since $\lambda$ is positive, $\lambda = 1$. 
+            Since $V$ has a basis consisting of eigenvectors, it follows that $B = I$. 
+        \end{proof}
+    \end{Solution}
+}
+}

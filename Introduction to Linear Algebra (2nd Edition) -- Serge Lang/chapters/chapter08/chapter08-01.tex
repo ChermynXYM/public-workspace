@@ -1,0 +1,97 @@
+\section{Eigenvectors and Eigenvalues} 
+\bx{
+\en{
+    \item 
+    Let $a$ be a number $\neq 0$. 
+    Prove that the eigenvectors of the matrix 
+    \begin{equation*}
+        \begin{pmatrix}
+            1 & a \\
+            0 & 1   
+        \end{pmatrix}
+    \end{equation*}
+    generate a $1$-dimensional space, and give a basis for this space. 
+    \begin{Solution}
+        \begin{proof}
+            Let $\begin{pmatrix} x \\ y \end{pmatrix}$ be an eigenvector. 
+            Then matrix multiplication shows that we must have $x + ay = \lambda x$ and $y = \lambda y$. 
+            If $y \neq 0$ then $\lambda = 1$. 
+            Since $a \neq 0$ this contradicts the first equation, so $y = 0$. 
+            Then $E^1$, which is an eigenvector, forms a basis for the space of eigenvectors. 
+        \end{proof}
+    \end{Solution}
+    \item
+    \item 
+    \item 
+    Show that if $\theta \in \mathbf{R}$, then the matrix 
+    \begin{equation*}
+        A = \begin{pmatrix}
+            \cos \theta & \sin \theta \\
+            \sin \theta & -\cos \theta 
+        \end{pmatrix}
+    \end{equation*}
+    always has an eigenvector in $\mathbf{R}^2$, and in fact that there exists a vector $v_1$ such that $Av_1 = v_1$. 
+    [\textit{Hint}: Let the first component of $v_1$ be 
+    \begin{equation*}
+        x = \frac{\sin \theta}{1 - \cos \theta} 
+    \end{equation*}
+    if $\cos \theta \neq 1$. 
+    Then solve for $y$. 
+    What if $\cos \theta = 1$?] 
+    \begin{solution}
+        \begin{proof}
+            We are proposed to show that there exists a vector $v_1$ such that $Av_1 = v_1$. 
+            Let $v_1 = \begin{pmatrix} x \\ y \end{pmatrix}$, then we list out the desired expression, that is 
+            \begin{equation*}
+                \begin{cases}
+                    \cos \theta \cdot x + \sin \theta \cdot y = x \\ 
+                    \sin \theta \cdot x - \cos \theta \cdot y = y 
+                \end{cases}. 
+            \end{equation*}
+            We observe that the first equation can be written as 
+            \begin{equation*}
+                (\cos \theta - 1) x + \sin \theta \cdot y = 0 
+            \end{equation*} 
+            Let the first component of $v_1$ be 
+            \begin{equation*}
+                x = \frac{\sin \theta}{1 - \cos \theta} 
+            \end{equation*} 
+            if $\cos \theta \neq 1$, and we resolve the equations to get $y = 1$. 
+            Thus we partly conclude the desired result. 
+            (If $\cos \theta = -1$, then $x = 0$ and $y$ ranges in $\mathbf{R}$ except $y = 0$, which also satisfies the desired result.) 
+
+            If $\cos \theta = 1$, it yelds that $y = 0$ and $x$ ranges in $\mathbf{R}$ except $x = 0$, and now we can conclude the desired result. 
+        \end{proof}
+    \end{solution}
+    \item 
+    In Exercise 4, let $v_2$ be a vector of $\mathbf{R}^2$ perpendicular to the vector $v_1$ found in that exercise. 
+    Show that $Av_2 = -v_2$. 
+    Define this to mean that $A$ is a reflection. 
+    \begin{solution}
+        \begin{proof}
+            Let $v_2 = \begin{pmatrix} -y \\ x \end{pmatrix}$ because $\langle v_1, v_2 \rangle = 0$. 
+            Then by the listed out equations, we have 
+            \begin{equation*}
+                Av_2 = 
+                \begin{pmatrix}
+                    \cos \theta & \sin \theta \\
+                \sin \theta & -\cos \theta 
+                \end{pmatrix}
+                \begin{pmatrix} 
+                    -y \\ x 
+                \end{pmatrix} = 
+                \begin{pmatrix} 
+                    \cos \theta \cdot (-y) + \sin \theta \cdot x \\ 
+                    \sin \theta \cdot (-y) - \cos \theta \cdot x
+                \end{pmatrix} =
+                \begin{pmatrix} 
+                    y \\ -x 
+                \end{pmatrix} = -v_2, 
+            \end{equation*}
+            which complete the proof. 
+        \end{proof}
+    \end{solution}
+    \item 
+    \item 
+}
+}

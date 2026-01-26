@@ -1,0 +1,101 @@
+\section{The Characteristic Polynomial} 
+\bx{
+\en{
+    \item 
+    \item 
+    \item 
+    \item 
+    \item 
+    \item 
+    \item 
+    \item 
+    \item 
+    \item 
+    \item 
+    Let $A$ be an invertible matrix. 
+    If $\lambda$ is an eigenvalue of $A$ show that $\lambda \neq 0$ and that $\lambda^{-1}$ is an eigenvalue of $A^{-1}$. 
+    \begin{Solution}
+        \begin{proof}
+            That $\lambda$ is an eigenvalue of $A$ means there exists a vector $v \neq 0$ such that $Av = \lambda v$. 
+            Since $A$ is assumed invertible, the kernel of $A$ is $O$, so $\lambda \neq 0$. 
+            Apply $A^{-1}$ to this last equation. 
+            We get 
+            \begin{equation*}
+                v = A^{-1}(Av) = A^{-1}(\lambda v) = \lambda A^{-1} v, 
+            \end{equation*}
+            whence $A^{-1}v = \lambda^{-1} v$, so $\lambda^{-1}$ is an eigenvalue of $A^{-1}$. 
+        \end{proof}
+    \end{Solution}
+    \item 
+    \item 
+    \item 
+    Let $A: V \to V$ be a linear map of $V$ into itself, and let $\{ v_1, \dots, v_n \}$ be a basis for $V$ consisting of eigenvectors having distinct eigenvalues $c_1, \dots, c_n$. 
+    Show that any eigenvector $v$ of $A$ in $V$ is a scalar multiple of some $v_i$. 
+    \begin{Solution}
+        \begin{proof}
+            Let $v$ be an eigenvector of $A$, so that $Av = \lambda v$, $v \neq O$. 
+            Since $\{ v_1, \dots, v_n \}$ is a basis of $V$, there exist numbers $a_1, \cdots, a_n$ such that 
+            \begin{equation*}
+                v = a_1v_1 + \cdots + a_nv_n. 
+            \end{equation*}
+            Applying $A$ yields 
+            \begin{equation*}
+                \lambda v = Av = A(a_1v_1 + \cdots + a_nv_n) = a_1c_1v_1 + \cdots + a_nc_nv_n. 
+            \end{equation*}
+            But we also have 
+            \begin{equation*}
+                \lambda v = \lambda a_1 v_1 + \cdots + \lambda a_n v_n. 
+            \end{equation*}
+            Subtracting gives 
+            \begin{equation*}
+                a_1(\lambda - c_1)v_1 + \cdots + a_n(\lambda - c_n)v_n = O. 
+            \end{equation*}
+            Since $v_1, \dots, v_n$ are linearly independent, we must have 
+            \begin{equation*}
+                a_i (\lambda - c_i) = 0 \quad \text{for all} \quad i = 1, \dots, n. 
+            \end{equation*}
+            Say $a_1 \neq 0$. 
+            Then $\lambda - c_i = 0$ so $\lambda = c_1$. 
+            Since we assumed that the numbers $c_1, \dots, c_n$ are distinct, it follows that $\lambda - c_i \neq 0$ for $j = 2, \dots, n$ whence $a_j = 0$ for $j = 2, \dots, n$. 
+            Hence finally $v = a_1v_1$. 
+            This concludes the proof. 
+        \end{proof}
+    \end{Solution}
+    \item 
+    Let $A, B$ be square matrices of the same size. 
+    Show that the eigenvalues of $AB$ are the same as the eigenvalues of $BA$. 
+    \begin{Solution}
+        \begin{proof}
+            Let $v \neq O$ be an eigenvector for $AB$ with eigenvalue $\lambda$, so that $ABv = \lambda v$. 
+            Then 
+            \begin{equation*}
+                BABv = \lambda Bv. 
+            \end{equation*}
+
+            If $Bv \neq O$ then $Bv$ is an eigenvector for $BA$ with this same eigenvalue $\lambda$. 
+
+            If on the other hand $Bv = O$, then $\lambda = 0$ because $ABv = \lambda v$ and $v \neq O$. 
+            Furthermore, $BA$ cannot be invertible (otherwise if $C$ is an inverse, $BAC = I$ so $B$ is invertible, which is not the case). 
+            Hence there is a vector $w \neq O$ such that $BAw = O$, so $0$ is also an eigenvalue of $BA$. 
+            This proves that the eigenvalues of $AB$ are also eigenvalues of $BA$. 
+
+            There is an even better proof of a more general fact, namely: 
+            \begin{equation*}
+                \textit{The characteristic polynomial of $AB$ is the same as that of $BA$.} 
+            \end{equation*}
+            To prove this, suppose first that $B$ is invertible. 
+            Since the determinant of a product is the product of the determinants, we get 
+            \begin{equation*}
+                \det(xI - AB) = \det(B(xI - AB)B^{-1}) = \det(xI - BABB^{-1}) = \det (xI - BA). 
+            \end{equation*}
+            This proves the theorem assuming $B$ invertible. 
+            But the identity to be proved 
+            \begin{equation*}
+                \det(xI - AB) = \det(xI - BA) 
+            \end{equation*}
+            is a polynomial identity, in which we can consider the components of $A$ and $B$ as ``variables'', so if the identity is true when $A$ is fixed and $B = (b_{ij})$ is ``variable'', i.e. the polynomial identity holds for infinitely many distinct matrices $B$, then it is true for all $B$. 
+            A matrix with ``variable'' components is invertible, so the previous argument applies to conclude the proof. 
+        \end{proof}
+    \end{Solution}
+}
+}

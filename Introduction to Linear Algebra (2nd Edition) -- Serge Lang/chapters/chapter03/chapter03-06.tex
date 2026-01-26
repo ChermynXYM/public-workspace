@@ -1,0 +1,80 @@
+\section{The Rank of a Matrix}
+\bx{
+\en{
+    \item
+    \item
+    \item
+    Let $A$ be an $m \times n$ matrix and let $B$ be an $n \times r$ matrix, so we can form the product $AB$. 
+    \ea{
+        \item 
+        Show that the columns of $AB$ are linear combinations of the columns of $A$. 
+        Thus prove that 
+        \begin{equation*}
+            \rank AB \leq \rank A.
+        \end{equation*}
+        \item 
+        Prove that $\rank AB \leq \rank B$. [\textit{Hint}: Use the fact that 
+        \begin{equation*}
+            \rank AB = \rank {^{t\!}(AB)} 
+        \end{equation*}
+        and 
+        \begin{equation*}
+            \rank B = \rank {^{t\!\!}B}.] 
+        \end{equation*}
+    }
+    \begin{solution}
+        \ea{
+            \item  
+            We first show that the columns of $AB$ are linear combinations of the columns of $A$. 
+            \begin{proof}
+                Let $A^1, A^2, \dots, A^n$ be the columns of $A$, and matrix $B$ is of the form 
+                \begin{equation*}
+                    \begin{pmatrix}
+                        b_{11} & b_{12} & \cdots & b_{1r} \\
+                        b_{21} & b_{22} & \cdots & b_{2r} \\
+                        \vdots & \vdots & \ddots & \vdots \\
+                        b_{n1} & b_{n2} & \cdots & b_{nr}
+                    \end{pmatrix}
+                \end{equation*}
+            Let $(AB)^1, (AB)^2, \dots, (AB)^r$ be the columns of $AB$, by the definition of matrix multiplication, we have
+            \begin{equation*}
+                (AB)^j = b_{1j}A^1 + b_{2j}A^2 + \dots + b_{nj}A^n \quad \text{for} \quad j = 1, 2, \dots, r,
+            \end{equation*}
+            which proves the columns of $AB$ are linear combinations of the columns of $A$ as desired. 
+            \end{proof}
+            
+            Then we continue our proof. 
+            \begin{proof}
+                From the proof above, we observe that any column of $AB$ is a linear combinations of $A^1, A^2, \dots, A^n$. 
+                So do any linear combination of the columns of $AB$. 
+                Consequently the column space of $AB$ is contained in the column space of $A$. 
+                Hence by Theorem 5.8, we have 
+                \begin{equation*}
+                    \rank AB \leq \rank A 
+                \end{equation*}
+                as desired. 
+            \end{proof}
+            \item
+            \begin{proof}
+                The transpose of the product is equal to the product of the transpose in the reverse order, that is to say 
+                \begin{equation*}
+                    \rank {^{t\!}(AB)} = \rank {^{t\!\!}B} {^{t\!\!}A}. 
+                \end{equation*}
+                Using the result of (a), we have
+                \begin{equation*}
+                    \rank {^{t\!\!}B} {^{t\!\!}A} \leq \rank {^{t\!\!}B}. 
+                \end{equation*}
+                From the hint, we see
+                \begin{equation*}
+                    \rank AB = \rank {^{t\!}(AB)} \quad \text{and} \quad \rank B = \rank {^{t\!\!}B}. 
+                \end{equation*}
+                Combining three expressions above, we conclude
+                \begin{equation*}
+                    \rank AB \leq \rank B 
+                \end{equation*}
+                as desired.
+            \end{proof}
+
+        }
+    \end{solution}
+}}

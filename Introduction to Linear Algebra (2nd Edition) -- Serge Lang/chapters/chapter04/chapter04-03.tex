@@ -1,0 +1,126 @@
+\section{The Kernel and Image of a Linear Map}
+\bx{
+\en{
+    \item
+    \item
+    \item
+    \item
+    \item
+    Let $L: V \to W$ be a linear map. 
+    Let $w$ be an element of $W$. 
+    Let $v_0$ be an element of $V$ such that $L(v_0) = w$. 
+    Show that any solution of the equation $L(X) = w$ is of type $v_0 + u$, where $u$ is an element of the kernel of $L$. 
+    \begin{Solution}
+        \begin{proof}
+            Since $L(v_0 + u) = L(v_0)$ if $u$ is in $\Ker L$, every element of the form $v_0 + u$ is a solution. 
+            Conversely, let $v$ be a solution of $L(v) = w$. 
+            Then 
+            \begin{equation*}
+                L(v - v_0) = L(v) - L(v_0) = w - w = 0,
+            \end{equation*}
+            so $v - v_0 = u$ is in the kernel, and $v = v_0 + u$. 
+        \end{proof}
+    \end{Solution}
+    \item
+    Let $V$ be the vector space of functions which have derivatives of all orders, and let $D: V \to V$ be the derivative. 
+    What is the kernel of $D$? 
+    \begin{solution}
+        Constant functions. 
+    \end{solution}
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item 
+    (To be done after you have done Exercise 15.) Let $U, W$ be subspaces of a vector space $V$. 
+    Show by the indicated method that 
+    \begin{equation*}
+        \fbox{$\dim U + \dim W = \dim (U + W) + \dim (U \cap W).$}
+    \end{equation*}
+    \ea{
+        \item 
+        Show that the map 
+        \begin{equation*}
+            L: U \times W \to V
+        \end{equation*}
+        given by 
+        \begin{equation*}
+            L(u, w) = u - w
+        \end{equation*}
+        is a linear map.
+        \item 
+        Show that image of $L$ is $U + W$. 
+        \item 
+        Show that the kernel of $L$ is the subspaces of $U \times W$ consisting of all elements $(u, u)$ where $u$ is in $U \cap W$. 
+        What is a basis for this subspace?
+        \item Apply the dimension formula in the text to conclude the proof. 
+    }
+    \begin{Solution}
+    \ea{
+        \item 
+        \begin{proof}
+            For any elements $(u_1, w_1), (u_2, w_2)$ of $U \times W$, we have
+            \begin{equation*}
+                \begin{aligned}
+                    L((u_1 + w_1) + (u_2 + w_2)) &= L(u_1 + u_2, w_1 + w_2) \\
+                    &= (u_1 + u_2) - (w_1 + w_2) \\ 
+                    &= (u_1 - w_1) + (u_2 - w_2) \\
+                    &= L(u_1, w_1) + L(u_2, w_2).
+                \end{aligned}
+            \end{equation*}
+            Furthermore, if $c$ is a number, then 
+            \begin{equation*}
+                \begin{aligned}
+                    L(c(u_1, w_1)) &= L(cu_1, cw_1) \\
+                    &= cu_1 - cw_1 \\
+                    &= c(u_1 - w_1) \\
+                    &= cL(u_1, w_1)
+                \end{aligned}
+            \end{equation*}
+            Hence $L$ is a linear map.
+        \end{proof}
+        \item 
+        \begin{proof}
+            The image is clearly contained in $U + W$. 
+            Given an arbitrary element $u + w$ with $u$ in $U$ and $w$ in $W$, we can write it in the form $u + w = u - (-w)$, which shows that it is in the image of $L$. 
+        \end{proof}
+        \item
+        \begin{proof}
+            The kernel of $L$ consists of those elements $(u, w)$ such that $u - w = O$, so $u = w$. 
+            In other words, it consists of the pairs $(u, u)$, and $u$ must lie both in $U$ and $W$, so in the intersection. 
+            If $\{ u_1, \dots, u_r \}$ is a basis for $U \cap W$, then $\{ (u_1, u_1), \dots, (u_r, u_r) \}$ is a basis for the kernel of $L$. 
+        \end{proof}
+        \item 
+        From (b), we see that the image of $L$ is $U + W$, that is to say
+        \begin{equation*}
+            \dim \Im L = \dim (U + W).
+        \end{equation*}
+        From (c), we see the dimension of the kernel of $L$ is the same as the dimension of $U \cap W$, that is to say
+        \begin{equation*}
+            \dim \Ker L = \dim (U \cap W).
+        \end{equation*}
+
+        Applying the dimension formula in the text
+        \begin{equation*}
+            \dim L = \dim \Ker L + \dim \Im L, 
+        \end{equation*}
+        then we have
+        \begin{equation*}
+            \dim (U \times W) = \dim (U \cap W) + \dim (U + W).
+        \end{equation*}
+        Substituting the dimension of $U \times W$ which we have already shown before by 
+        \begin{equation*}
+            \dim (U \times W) = \dim U + \dim W. 
+        \end{equation*}
+        Hence we conclude the proof
+        \begin{equation*}
+            \dim U + \dim W = \dim (U + W) + \dim (U \cap W). 
+        \end{equation*}
+    }
+    \end{Solution}
+}}

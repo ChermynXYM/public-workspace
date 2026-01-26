@@ -1,0 +1,83 @@
+\section{The Rank and Linear Equations Again}
+\bx{
+\en{
+    \item 
+    Let $A$ be a non-zero vector in $\mathbf{R}^n$. 
+    What is the dimension of the space of solution of the solutions of the equation $A \cdot X = 0$?  
+    \begin{Solution}
+        n-1
+    \end{Solution}
+    \item 
+    What is the dimension of the subspace of $\mathbf{R}^6$ perpendicular to the two vectors $(1, 1, -2, 3, 4, 5)$ and $(0, 0, 1, 1, 0, 7)$? 
+    \begin{Solution}
+        4
+    \end{Solution}
+    \item 
+    Let $A$ be a non-zero vector in $n$-space. 
+    Let $P$ be a point in $n$-space. 
+    What is the dimension of the set of solutions of the equation 
+    \begin{equation*}
+        X \cdot A = P \cdot A?
+    \end{equation*}
+    \begin{Solution}
+        n-1 
+    \end{Solution}
+    \item 
+    \item 
+    \item 
+    Let $L: V \to W$ be a linear map. 
+    Using a theorem from the text, prove that 
+    \begin{equation*}
+        \dim \Im L \leq \dim V.
+    \end{equation*}
+    \begin{Solution}
+        \begin{proof}
+            One theorem states that 
+            \begin{equation*}
+                \dim V = \dim \Im L + \dim \Ker L. 
+            \end{equation*}
+            Since $\dim \Ker L \geq 0$, the desired inequality follows. 
+        \end{proof}
+    \end{Solution}
+    \item 
+    Let $A, B$ be two matrices which can be multiplied, i.e. such that $AB$ exists. 
+    Prove that 
+    \begin{equation*}
+        \rank AB \leq \rank A \quad \text{and} \quad \rank AB \leq \rank B. 
+    \end{equation*}
+    \begin{Solution}
+        One proof (there are others): $\rank A = \dim \Im L_A$. 
+        But $L_{AB} = L_A \circ L_B$. 
+        Hence the image of $L_{AB}$ is contained in the image of $L_A$. 
+        Hence $\rank AB \leq \rank A$. 
+
+        For the other inequality, note that the rank of a matrix is equal to the rank of its transpose, because column rank equals row rank. 
+        Hence 
+        \begin{equation*}
+            \rank AB = \rank {^{t\!\!}B} {^{t\!\!}A}.
+        \end{equation*}
+        Now apply the first inequality to get $\rank {^{t\!\!}B} {^{t\!\!}A} \leq \rank {^{t\!\!}B} = \rank B$. 
+    \end{Solution}
+    \item 
+    Let $U$ be a subspace of $\mathbf{R}^n$. 
+    Prove that $U^{\perp}$ is also a subspace. 
+    \begin{solution}
+        \begin{proof}
+            Observe first that $O$ is the vector which is perpendicular to all elements of $U$, and hence $O$ is in the orthogonal complement of $U$, i.e. $U^{\perp}$. 
+
+            Next, suppose that $u_1, u_2$ are in the $U^{\perp}$. 
+            Then for arbitrary element $u$ of $U$, we have 
+            \begin{equation*}
+                (u_1 + u_2 ) \cdot u = u_1 \cdot u + u_2 \cdot u = 0, 
+            \end{equation*}
+            thereby proving that $u_1 + u_2$ is in the orthogonal complement of $U$. 
+
+            If $c$ is a number, then 
+            \begin{equation*}
+                cu_1 \cdot u = c(u_1 \cdot u) = 0. 
+            \end{equation*}
+            Hence $cu_1$ is in the orthogonal complement of $U$. 
+            This proves that $U^{\perp}$ is also a subspace. 
+        \end{proof}
+    \end{solution}
+}}

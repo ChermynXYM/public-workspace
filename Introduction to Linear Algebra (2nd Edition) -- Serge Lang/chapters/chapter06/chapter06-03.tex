@@ -1,0 +1,23 @@
+\section{Bilinear Maps and Matrices}
+\bx{
+\en{
+    \item 
+    Let $A$ be $n \times n$ matrix, and assume that $A$ is symmetric, i.e. $A = {^{t\!}A}$. 
+    Let $\varphi_A: \mathbf{R}^n \times \mathbf{R}^n \to \mathbf{R}$ be its associated bilinear map. 
+    Show that 
+    \begin{equation*}
+        g_A(X, Y) = g_A(Y, X)
+    \end{equation*}
+    for all $X, Y \in \mathbf{R}^n$, and thus that $g_A$ is a scalar product, i.e. satisfies conditions \textbf{SP 1}, \textbf{SP 2}, and \textbf{SP 3}. 
+    \begin{Solution}
+        \begin{proof}
+            For all column vectors $X, Y$ we note that ${^{t\!}X}AY$ is a $1 \times 1$ matrix, so equal to its own transpose. 
+            Therefore 
+            \begin{equation*}
+                \varphi_A(X, Y) = {^{t\!}X}AY = {^{t\!}({^{t\!}X}AY)} = {^{t\!}Y}{^{t\!\!}A}{^{t\!}{^{t\!}X}} = {^{t\!}Y} A X = \varphi_A (Y, X). 
+            \end{equation*}
+        \end{proof}
+    \end{Solution}
+    \item
+    \item
+}}

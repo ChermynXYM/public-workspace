@@ -1,0 +1,170 @@
+\section{Composition of Linear Maps}
+\bx{
+\en{
+    \item 
+    Let $A, B$ be two $m \times n$ matrices. 
+    Assume that 
+    \begin{equation*}
+        AX = BX 
+    \end{equation*}
+    for all $n$-tuples $X$. 
+    Show that $A = B$. 
+    \begin{Solution}
+        \begin{proof}
+            Let $C = A - B$. 
+            Then $CX = O$ for all $X$. 
+            Take $X = E^j$ to be the $j$-th unit vector for $j = 1, \dots, n$. 
+            Then $CE^j = C^j$ is the $j$-th column of $C$. 
+            By assumption, $CE^j = O$ for all $j$ so $C = O$. 
+        \end{proof}
+    \end{Solution}
+    \item 
+    \item 
+    \item 
+    \item 
+    Let $P: V \to V$ be a linear map such that $P^2 = P$. 
+    Define $Q = I - P$. 
+    \ea{
+        \item Show that $Q^2 = Q$. 
+        \item Show that $\Im P = \Ker Q$ and $\Ker P = \Im Q$. 
+    }
+    A linear map $P$ such that $P^2 = P$ is called a \textbf{projection}. 
+    It generalizes the notion of projection in the usual sense. 
+    \begin{Solution}
+        \ea{
+            \item 
+            \begin{proof}
+                \begin{equation*}
+                    Q^2 = (I - P)^2 = I^2 - 2IP + P^2 = I - 2P + P = I - P. 
+                \end{equation*}
+            \end{proof}
+            \item 
+            \begin{proof}
+                Let $v \in \Im P$ so $v = Pw$ for some $w$. 
+                Then $Qv = QPw = 0$ because $QP = (I - P)P = P - P^2 = P - P = O$. 
+                Hence $\Im P \subset \Ker Q$. 
+                Conversely, let $v \in \Ker Q$ so $Qv = 0$. 
+                Then $(I - P)v = 0$ so $v - Pv = 0$, and $v = Pv$, so $v \in \Im P$, whence $\Ker Q \subset \Im P$. 
+                Therefore we conclude that $\Im P = \Ker Q$. 
+
+                Similarly, we can show that $\Ker P = \Im Q$. 
+                Let $v \in \Ker P$ so $Pv = 0$. 
+                Then $(I - Q)v = 0$ so $v - Qv = 0$, and $v = Qv$, so $v \in \Im Q$, whence $\Ker P \subset \Im Q$. 
+                Conversely, let $v \in \Im Q$ so $v = Qw$ for some $w$. 
+                Then $Pv = PQw = 0$ because $PQ = P(I - P) = P - P^2 = P - P = O$. 
+                Hence $\Im Q \subset \Ker P$. 
+                Therefore we conclude that $\Ker P = \Im Q$. 
+            \end{proof}
+        }
+    \end{Solution}
+   \item  
+   Let $P: V \to V$ be a \textbf{projection}, that is the linear map such that $P^2 = P$. 
+   \ea{
+    \item 
+    Show that $V = \Ker P + \Im P$. 
+    \item 
+    Show that the intersection of $\Im P$ and $\Ker P$ is $\{ O \}$. 
+    In other words, if $v \in \Im P$ and $v \in \Ker P$, then $v = O$. 
+   }
+   \begin{Solution}
+   \ea{
+    \item 
+    \begin{proof}
+        Let $v \in V$. 
+        Then $v = v - Pv + Pv$, and $v - Pv \in \Ker P$ because 
+        \begin{equation*}
+            P(v - Pv) = Pv - P^2v = Pv - Pv = O. 
+        \end{equation*}
+        Furthermore $Pv \in \Im P$, thus proving (a). 
+    \end{proof}
+    \item 
+    \begin{proof}
+        Let $v \in \Im P \cap \Ker P$. 
+        Since $v \in \Im P$ there exists $w \in V$ such that $v = Pw$. 
+        Since $v \in \Ker P$, we get 
+        \begin{equation*}
+            O = Pv = P^2w = Pw = v, 
+        \end{equation*}
+        so $v = O$, whence (b) is also proved. 
+    \end{proof}
+   }
+   \end{Solution}
+
+   Let $V$ be a vector space, and let $U, W$ be subspaces. 
+   One says that $V$ is a \textbf{direct sum} of $U$ and $W$ if the following conditions are satisfied: 
+   \begin{equation*}
+        V = U + W \quad \text{and} \quad U \cap W = \{ O \}. 
+   \end{equation*}
+   In Exercise 6, we have proved that $V$ is the direct sum of $\Ker P$ and $\Im P$. 
+   \item 
+   \item 
+   \item 
+   Let $A, B$ be two matrices so that the product $AB$ is defined. 
+   Prove that 
+   \begin{equation*}
+        \rank AB \leq \rank A \quad \text{and} \quad \rank AB \leq \rank B. 
+   \end{equation*}
+   [\textit{Hint}: Consider the linear maps $L_{AB}, L_A$, and $L_B$.] 
+   \begin{solution}
+       \begin{proof}
+           Let $L_{AB}, L_A$ and $L_B$ be the linear maps such that
+           \begin{equation*}
+                L_{AB}(X) = ABX, \quad L_A(X) = AX \quad \text{and} \quad L_B(X) = BX. 
+           \end{equation*}
+           By composition of linear maps corresponding to multiplication of matrices, we have 
+           \begin{equation*}
+                L_{AB} = L_A \circ L_B. 
+           \end{equation*}
+           The rank of the matrix is the dimension of the image of its linear map, that is to say 
+           \begin{equation*}
+                \rank AB = \dim \Im L_{AB}, \quad \rank L_A = \dim \Im A \quad \text{and} \quad \rank B = \dim \Im B. 
+           \end{equation*}
+
+           We first show that $\rank AB \leq \rank A$. 
+           It is clear that $\Im L_{AB} \subseteq \Im L_{A}$. 
+           Then 
+           \begin{equation*}
+                \dim \Im L_{AB} \leq \dim \Im L_{A}, 
+           \end{equation*}
+           because the dimension of the subspace of a space is less than or equal to the dimension of that space. 
+           Then we can immediately conclude that 
+           \begin{equation*}
+                \rank AB \leq \rank A. 
+           \end{equation*}
+
+           Next, we show that $\rank AB \leq \rank B$. 
+           We have already shown before that the dimension of the image of a linear map is less than or equal to the dimension of its domain, say  
+           \begin{equation*}
+                \dim \Im L_{AB} = \dim \Im (L_A \circ L_B) \leq \dim \Im L_B, 
+           \end{equation*}
+           because we can regard $L_A$ as being restricted to the subspace $\Im L_B$ in the composition $L_{AB} = L_A \circ L_B$. 
+           Then we sort the expressions and then conclude that 
+           \begin{equation*}
+                \rank AB \leq \rank B. 
+           \end{equation*}
+           Hence we complete the proof. 
+       \end{proof} 
+   \end{solution}
+   In fact, define the \textbf{rank of a linear map} $L$ to be $\dim \Im L$. 
+   If $L: V \to W$ and $F: W \to U$ are linear maps of finite dimensional spaces, show that 
+   \begin{equation*}
+        \rank F \circ L \leq \rank F \quad \text{and} \rank F \circ L \leq \rank L. 
+   \end{equation*}
+   \begin{Solution}
+        \begin{proof}
+            The dimension of a subspace is $\leq$ the dimension of the space. 
+            Then 
+            \begin{equation*}
+                \Im F \circ L \leq \Im F \quad \text{so} \quad \dim \Im F \circ L \leq \dim \Im F 
+            \end{equation*}
+            so $\rank F \circ L \leq \rank F$. 
+            This proves one of the formulas. 
+            For the other, view $F$ as a linear map defined on $\Im L$. 
+            Then 
+            \begin{equation*}
+                \rank F \circ L = \dim \Im F \circ L \leq \dim \Im L = \rank L. 
+            \end{equation*}
+        \end{proof}
+   \end{Solution}
+   \item 
+}}

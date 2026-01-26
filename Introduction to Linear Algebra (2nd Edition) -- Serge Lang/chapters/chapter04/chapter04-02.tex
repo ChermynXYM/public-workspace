@@ -1,0 +1,34 @@
+\section{Linear Mappings}
+\bx{
+\en{
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    Show that the image of a convex set under a linear map is convex. 
+    \begin{solution}
+        \begin{proof}
+            Let $L: V \to W$ be a linear map, and let $S$ be a convex set in $V$. 
+            We denote the image of $S$ under $L$ by $L(S)$. 
+
+            Let $L(v)$ and $L(w)$ be two points in $L(S)$ such that $v, w \in S$. 
+            Let $0 \leq t \leq 1$. 
+            Then 
+            \begin{equation*}
+                tL(v) + (1-t)L(w) = L[tv + (1-t)w]. 
+            \end{equation*}
+            Then $tv + (1-t)w$ lies in convex set $S$, whence $L[tv + (1-t)w]$ is a point in $L(S)$. 
+            From the definition of convex set, we show that the image of a convex set under a linear map is convex as desired. 
+        \end{proof}
+    \end{solution}
+}}

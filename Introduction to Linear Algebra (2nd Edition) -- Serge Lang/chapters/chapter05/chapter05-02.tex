@@ -1,0 +1,111 @@
+\section{Inverse}
+\bx{
+\en{
+    \item 
+    Let $R_\theta$ be rotation counterclockwise by an angle $\theta$. 
+    How would you express the inverse $R^{-1}_\theta$ as $R_\varphi$ for some $\varphi$ in a simple way? 
+    If 
+    \begin{equation*}
+        A(\theta) = 
+        \begin{pmatrix}
+            \cos \theta & - \sin \theta \\
+            \sin \theta & \cos \theta
+        \end{pmatrix}
+    \end{equation*}
+    is the matrix associated with $R_\theta$, what is the matrix associated with $R^{-1}_\theta$? 
+    \begin{Solution}
+        $R^{-1}_\theta = R_{- \theta}$ because $R_{\theta} \circ R_{-\theta} = R_{\theta - \theta} = R_0 = I$. 
+        The matrix associated with $R^{-1}_\theta$ is 
+        \begin{equation*}
+            \begin{pmatrix}
+                \cos \theta & \sin \theta \\ 
+                -\sin \theta & \cos \theta 
+            \end{pmatrix}
+        \end{equation*}
+        because $\cos(-\theta) = \cos \theta$. 
+    \end{Solution}
+    \item 
+    \ea{
+        \item 
+        Finish the proof of Theorem 2.1. 
+        \item 
+        Give the proof of Theorem 2.4 (ii). 
+    }
+    \begin{solution}
+    \ea{
+        \item  
+        \begin{proof}
+            Let $v \in V$. 
+            Then we must show that 
+            \begin{equation*}
+                G(cv) = cG(v). 
+            \end{equation*}
+            Let $u = G(v)$. 
+            By definition, this means that 
+            \begin{equation*}
+                F(u) = F(G(v)) = (F \circ G)(v) = I_V v = v. 
+            \end{equation*}
+            Since $F$ is linear, we find that 
+            \begin{equation*}
+                F(cu) = cF(u) = cv. 
+            \end{equation*}
+            By definition of the inverse map, this means that 
+            \begin{equation*}
+                G(cv) = G(F(cu)) = (G \circ F)(cu) = I_U(cu) = cv, 
+            \end{equation*}
+            thus proving what we wanted. 
+        \end{proof}
+        \item 
+        \begin{proof}
+            Suppose first that $F$ is surjective. 
+            Then by the definition of surjection, we have 
+            \begin{equation*}
+                \Im F = W \quad \text{so} \quad \dim \Im F = \dim W. 
+            \end{equation*}
+            But
+            \begin{equation*}
+                \dim V = \dim \Ker F = \dim \Im F \quad \text{and} \quad \dim V = \dim W, 
+            \end{equation*}
+            so $\dim \Ker F = 0$, which implicates that $\Ker F = \{ O \}$. 
+            Hence $F$ is injective by Theorem 2.2. 
+            This proves (ii), by using Theorem 2.3. 
+        \end{proof}
+    }
+    \end{solution}
+    \item 
+    \item 
+    \item 
+    \item 
+    \item 
+    \item 
+    \item 
+    \item 
+    \item 
+    Let $V$ be a two-dimensional vector space, and let $L: V \to V$ be a linear map such that $L^2 = O$, but $L \neq O$. 
+    Let $v$ be an element of $V$ such that $L(v) \neq O$. 
+    Let $w = L(v)$. 
+    Prove that $\{ v, w \}$ is a basis of $V$. 
+    \begin{Solution}
+        \begin{proof}
+            It suffices to prove that $v$ and $w$ are linearly independent. 
+            Suppose $xv + yw = O$. 
+            Apply $L$. 
+            Then 
+            \begin{equation*}
+                \begin{aligned}
+                    L(O) &= L(xv +yw) \\
+                    &= xL(v) + yL(w) \\
+                    &= xL(v) + yL(L(v)) \\
+                    &= xL(v) + yO \\
+                    &= O
+                \end{aligned}
+            \end{equation*}
+            because $L^2 = O$. 
+            Hence $xL(v) = O$. 
+            Since $L(v) \neq O$, it follows that $x = 0$. 
+            Then $y = 0$ because $w \neq O$. 
+        \end{proof}
+    \end{Solution}
+    \item 
+    \item 
+}}
