@@ -1,0 +1,1303 @@
+\section{Exercises}
+Exercises marked with \oS have detailed solutions at \url{http://stat110.net}. 
+\en{
+    \subsection{Counting}
+    \item %01 
+    How many ways are there to permute the letters in the word MISSISSIPPI? 
+    \begin{solution}
+        Here are two approaches. 
+        We could choose where to put the I's, then where to put the S's (from the remaining positions), then where to put P's (and then the M is determined). 
+        Alternatively, we can start with $11!$ and then adjust for overcounting, dividing by $4!4!2!$ to account for the fact that the I's can be permuted among themselves in any way, and likewise for the S's and P's. 
+        This gives 
+        \begin{equation*}
+            \binom{11}{4} \binom{7}{4} \binom{3}{2} = \frac{11!}{4!4!2!} = 34650 \quad \text{ways.}
+        \end{equation*}
+    \end{solution}
+    \item %02
+    \ea{
+        \item 
+        How many 7-digit phone numbers are possible, assuming that the first digit can't be a 0 or a 1? 
+        \item 
+        Re-solve (a), except now assume also that the phone number is not allowed to start with 911 (since this is reserved for emergency use, and it would not be desirable for the system to wait to see whether more digits were going to be dialed after someone has dialed 911). 
+    }
+    \begin{solution}
+        \ea{
+            \item
+            There are 8 possibilities for the first digit, and 10 for each of the others. 
+            So by the multiplication rule, there are $8 \cdot 10^6 = 8000000$ possible numbers. 
+            \item 
+            Let's count the complement: the phone numbers that start with 911. 
+            This amounts to fixing the first three digits, and then counting the possibilities for the remaining 4 digits, so the number of possibilities of which is $1 \cdot 10^4 = 10000$. 
+            Therefore the number of possible phone numbers that do not start with 911 is 
+            \begin{equation*}
+                8000000 - 10000 = 7990000. 
+            \end{equation*}
+        }
+    \end{solution}
+    \item 
+    \item %04
+    A \textit{round-robin tournament} is being held with $n$ tennis players; this means that every player will play against every other player exactly once. 
+    \ea{
+        \item 
+        How many games are played in total? 
+        \item 
+        How many possible outcomes are there for the tournament (the outcome lists out who won and who lost for each game)? 
+    }
+    \begin{solution}
+        \ea{
+            \item 
+            One way to count games is to use the multiplication rule with an adjustment for overcounting. 
+            By the multiplication rule, there are $n$ ways to choose the first tennis player and $n-1$ ways to choose the second player, but this counts each game twice, since for any two players, such as players 1 and 2, picking 1 and 2 to be in the game is the same as picking 2 and 1 to be in the game. 
+            Since we have overcounted by a factor of 2, the number of games is $n(n-1)/2$. 
+            \item 
+            Take the $n(n-1)/2$ games, and label them from 1 to $n(n-1)/2$. 
+            There are 2 possibilities for each game, then once that is fixed there are also 2 possibilities for the next game. 
+            So by the multiplication rule, there are $2^{n(n-1)/2}$ possible outcomes for the tournament. 
+        }
+    \end{solution}
+    \item %05
+    A \textit{knock-out tournament} is being held with $2^n$ tennis players. 
+    This means that for each round, the winners move on to the next round and the losers are eliminated, until only one person remains. 
+    For example, if initially there are $2^4 = 16$ players, then there are 8 games in the first round, then the 8 winners move on to round 2, then the 4 winners move on to round 3, then the 2 winners move on to round 4, the winner of which is declared the winner of the tournament. 
+    (There are various systems for determining who plays whom within a round, but these do not matter for this problem.) 
+    \ea{
+        \item 
+        How many rounds are there? 
+        \item 
+        Count how many games in total are played, by adding up the numbers of games played in each round. 
+        \item 
+        Count how many games in total are played, this time by directly thinking about it without doing almost any calculation. 
+    }
+    Hint: How many players needed to be eliminated? 
+    \ea{
+        \item 
+        There are $2^n$ players, then there are $2^{n-1}$ games in the first round, then the $2^{n-1}$ winners move on to round 2, then the $2^{n-2}$ winners move to round 3, then the $2^{n-3}$ winners move to round 4. 
+        After $n$ rounds, there are $2^0 = 1$ winner, and he is declared the winner of the tournament. 
+        Thus, there are $n$ rounds. 
+        \item 
+        Like the statements above, there are $2^n$ players, then there are $2^{n-1}$ games in the first round, then there are $2^{n-2}$ games in the round 2, then there are $2^{n-3}$ games in the round 3, and so on. 
+        Then we add up the numbers of games played in each round to get the total number of games played 
+        \begin{equation*}
+            2^{n-1} + 2^{n-2} + 2^{n-3} + \cdots + 2^0 = 2^n - 1.
+        \end{equation*}
+        \item 
+        We need only one player to win the tournament, so there must be $2^{n}-1$ players eliminated in the whole tournament. 
+        And each game eliminates exactly one player, so there are $2^{n}-1$ games played in total. 
+    }
+    \item %06
+    \item %07
+    Two chess players, A and B, are going to play 7 games. 
+    Each game has three possible outcomes: a win for A (which is a loss for B), a draw (tie), and a loss for A (which is a win for B). 
+    A win is worth 1 point, a draw is worth 0.5 points, and a loss is worth 0 points. 
+    \ea{
+        \item 
+        How many possible outcomes for the individual games are there, such that overall player A ends up with 3 wins, 2 draws, and 2 losses? 
+        \item 
+        How many possible outcomes for the individual games are there, such that A ends up with 4 points and B ends up with 3 points? 
+        \item 
+        Now assume that they are playing a best-of-7 match, where the match will end when either player has 4 points or when 7 games have been played, whichever is first. 
+        For example, if after 6 games the score is 4 to 2 in favor of A, then A wins the match and they don't play a 7th game. 
+        How many possible outcomes for the individual games are there, such that the match lasts for 7 games and A wins by a score of 4 to 3? 
+    }
+    \begin{solution}
+        \ea{
+            \item 
+            Here are two approaches. 
+            We could choose which games A wins, then choose which games A draws (and then the losses are determined). 
+            Alternatively, we can start with $7!$ and then adjust for overcounting, dividing by $3!2!2!$ to account for the fact that the wins can be permuted among themselves in any way, and likewise for the draws and losses. 
+            This gives 
+            \begin{equation*}
+                \binom{7}{3} \binom{4}{2} = \frac{7!}{3!2!2!} =  210 \quad \text{prossible outcomes.}
+            \end{equation*}
+            \item 
+            Using the similar method as above, we can count and list the possible outcomes for A that satisfy the conditions, as shown below: 
+            \begin{center}
+                \begin{tabularx}{0.9\linewidth}{*{4}{Y}}
+                    \toprule
+                    Wins & Draws & Losses & Possibilities \\
+                    \midrule
+                    4 & 0 & 3 & 35 \\
+                    3 & 2 & 2 & 210 \\
+                    2 & 4 & 1 & 105 \\
+                    1 & 6 & 0 & 7 \\
+                    \bottomrule
+                \end{tabularx}
+            \end{center}
+            Summing up these possibilities, we get a total of 357 possible outcomes. 
+            \item 
+            From the conditions, we can rephrase the problem as follows: how many possible outcomes for the individual games are there, such that after 6 games the score is 3 to 3 or 3.5 to 2.5 in favor of A. 
+            Similar to the previous, we can count and list the possible outcomes for A that satisfy the conditions, as shown below: 
+            \begin{center}
+                \begin{tabularx}{0.9\linewidth}{*{4}{Y}}
+                    \toprule
+                    Wins & Draws & Losses & Possibilities \\
+                    \midrule
+                    3 & 0 & 3 & 20 \\
+                    2 & 2 & 2 & 90 \\
+                    1 & 4 & 1 & 30 \\
+                    0 & 6 & 0 & 1 \\
+                    \bottomrule
+                \end{tabularx}
+
+                \vspace{0.5em}
+                3 to 3 in favor of A
+                \vspace{0.5em}
+
+                \begin{tabularx}{0.9\linewidth}{*{4}{Y}}
+                    \toprule
+                    Wins & Draws & Losses & Possibilities \\
+                    \midrule
+                    3 & 1 & 2 & 60 \\
+                    2 & 3 & 1 & 60 \\
+                    1 & 5 & 0 & 6 \\
+                    \bottomrule
+                \end{tabularx}
+
+                \vspace{0.5em}
+                3.5 to 2.5 in favor of A
+            \end{center}
+            Summing up these possibilities, we get a total of 267 possible outcomes. 
+        }
+    \end{solution}
+    \item %08
+    \item %09
+    \item %10
+    To fulfill the requirements for a certain degree, a student can choose to take any 7 out of a list of 20 courses, with the constraint that at least 1 of the 7 courses must be a statistics course. 
+    Suppose that 5 of the 20 courses are statistics courses. 
+    \ea{
+        \item 
+        How many choices are there for which 7 courses to take? 
+        \item 
+        Explain intuitively why the answer to (a) is \textit{not} $\binom{5}{1} \cdot \binom{19}{6}$. 
+    }
+    \begin{solution}
+        \ea{
+            \item 
+            Let's count the complement: the number of choices that none of the 7 courses is a statistics course. 
+            This amounts to counting the number of choices that all 7 courses are not statistics courses, so the number of choices of which is $\binom{15}{7} = 6435$. 
+            Therefore the number of choices that at least 1 of the 7 courses is a statistics course is 
+            \begin{equation*}
+                \binom{20}{7} - \binom{15}{7} = 77520 - 6435 = 71085. 
+            \end{equation*}
+            \item 
+            To see why \(\binom{5}{1}\binom{19}{6}\) is wrong, let's take a concrete example below. 
+            Consider 2 statistics courses, saying A and B, and another fixed 5 courses that are not statistics courses. 
+            Suppose we choose A as the required one, then we choose B and another 5 courses we just mentioned. 
+            This is exactly one of the choices that concluded in the $\binom{5}{1} \cdot \binom{19}{6}$ choices. 
+            Then we choose B as the required one, then we choose A and another 5 courses we just mentioned. 
+            This is exactly another one of the choices that concluded in the $\binom{5}{1} \cdot \binom{19}{6}$ choices. 
+            Surprisingly, we have overcounted the same thing twice. 
+            Thus the answer to (a) is definitely not $\binom{5}{1} \cdot \binom{19}{6}$. 
+            
+        }
+    \end{solution}
+    \item %11
+    \item %12
+    Four players, named A, B, C, and D, are playing a card game. 
+    A standard, well-shuffled deck of cards is dealt to the players (so each player receives a 13-card hand). 
+    \ea{
+        \item 
+        How many possibilities are there for the hand that player A will get? 
+        (Within a hand, the order in which cards were received doesn't matter.) 
+        \item 
+        How many possibilities are there overall for what hands everyone will get, assuming that it matters which player gets which hand, but not the order of cards within a hand? 
+        \item 
+        Explain intuitively why the answer to Part (b) is not the fourth power of the answer to Part (a). 
+    }
+    \begin{solution}
+        \ea{
+            \item 
+            To count the number of possibilities for the hand that player A will get, we just need to count the possibilities to choose 13 cards out of a deck of 52 cards. 
+            That is $\binom{52}{13} = 635013559600$ possibilities. 
+            \item 
+            Here are two approaches. 
+            We could choose which cards to give to A, then which cards to give to B (from the remaining cards), then which cards to give to C (and then the remaining 13 cards go to D). 
+            Alternatively, we can start with $52!$ and then adjust for overcounting, dividing by $13!13!13!13!$ to account for the fact that the cards in A's hand can be permuted among themselves in any way, and likewise for the cards in the hands of B, C and D. 
+            This gives 
+            \begin{equation*}
+                \binom{52}{13}\binom{39}{13}\binom{26}{13} = \frac{52!}{(13!)^4} \approx 5.36 \times 10^{28} \quad \text{possibilities.} 
+            \end{equation*}
+            \item
+            The answer to Part (a) is the possibilities that choose 13 cards out of 52 for player A. 
+            For Part (b), since the cards are dealt without replacement, player B must then choose 13 from the remaining 39, player C from the remaining 26, and the last 13 go to player D. 
+            If the answer to Part (b) were simply the fourth power of the answer to Part (a), it would incorrectly imply that each player is independently choosing 13 cards from a full 52-card deck, which is not the case. 
+        }
+    \end{solution}
+    \item %13
+    A certain casino uses 10 standard decks of cards mixed together into one big deck, which we will call a \textit{superdeck}. 
+    Thus, the superdeck has $52 \cdot 10 = 520$ cards, with 10 copies of each card. 
+    How many different 10-card hands can be dealt from the superdeck? 
+    The order of the cards does not matter, nor does it matter which of the original 10 decks the cards came from. 
+    Express your answer as a binomial coefficient. 
+
+    Hint: Bose-Einstein. 
+    \begin{solution}
+        We can solve it by solving an isomorphic problem. 
+        That is to find the number of ways to choose 10 times from a set of 52 objects with replacement, where the order doesn't matter. 
+        By the Bose-Einstein, we easily obtain the answer as a binomial coefficient: 
+        \begin{equation*}
+            \binom{52 + 10 - 1}{10} = \binom{61}{10} \quad \text{ways}. 
+        \end{equation*}
+        To relate this result back to the original problem, we can let each card of a standard deck correspond to one of the 52 objects and use the cards as ``check marks'' to tally how many times each object is selected. 
+        For example, if a 10-card hand contains exactly 3 Ace of Hearts, that means the object corresponding to the Ace of Hearts was chosen exactly 3 times. 
+        The fact that the order of the cards does not matter corresponds to the fact that we don't care about the order in which the objects are chosen. 
+        The fact that each card has 10 copies corresponds to the fact that we choose a set of 52 objects with replacement. 
+        Thus, the answer to the original question is also $\binom{61}{10}$. 
+    \end{solution}
+    
+    \item %14
+    \leavevmode
+    \subsection{Story proof}
+    \item %15
+    \oS Given a story proof that $\sum_{k=0}^{n} \binom{n}{k} = 2^n$. 
+    \begin{Solution}
+        \begin{storyproof}
+            Consider picking a subset of $n$ people. 
+            There are $\binom{n}{k}$ choices with size $k$ and the sum of them counts all possible subsets of any size from $n$ people, since each subset has a unique size $k$, on the one hand, and on the other hand there are $2^n$ subsets by the multiplication rule, because each person is either included or excluded. 
+        \end{storyproof}
+    \end{Solution}
+    \item %16
+    \oS Show that for all positive integers $n$ and $k$ with $n \geq k$, 
+    \begin{equation*}
+        \binom{n}{k} + \binom{n}{k-1} = \binom{n+1}{k}, 
+    \end{equation*}
+    doing this in two ways: (a) algebraically and (b) with a story, giving an interpretation for why both sides count the same thing. 
+
+    Hint for the story proof: Imagine an organization consisting of $n + 1$ people, with one of them pre-designated as the president of the organization. 
+    \begin{Solution}
+        \ea{
+            \item             
+            For the algebraic proof, start with the definition of the binomial coefficients in the left-hand side, and do some algebraic manipulation as follows: 
+            \begin{equation*}
+                \begin{aligned}
+                    \binom{n}{k} + \binom{n}{k-1}
+                    &= \frac{n!}{k!(n-k)!} + \frac{n!}{(k-1)!(n-k+1)!} \\
+                    &= \frac{(n-k+1)n!+(k)n!}{k!(n-k+1)!} \\
+                    &= \frac{(n+1)n!}{k!(n-k+1)!} \\
+                    &= \frac{(n+1)!}{k!(n+1-k)!} \\
+                    &= \binom{n+1}{k}. 
+                \end{aligned}
+            \end{equation*}
+            \item 
+            \begin{storyproof}    
+            For the story proof, consider $n + 1$ people, with one of them pre-designated as "president". 
+            The right-hand side is the number of ways to choose $k$ out of these $n + 1$ people, with order not mattering. 
+            The left-hand side counts the same thing in a different way, by considering two cases: the president is or isn't in the chosen group. 
+        
+            The number of groups of size $k$ which include the president is $\binom{n}{k-1}$, since once we fix  the president as a member of the group, we only need to choose another $k - 1$ members out of the remaining $n$ people. 
+            Sim\-i\-lar\-ly, there are $\binom{n}{k}$ groups of size $k$ that don't include the president. 
+            Thus, the two sides of the equation are equal. 
+            \end{storyproof}
+            }
+    \end{Solution}
+    \item %17
+    Give a story proof that 
+    \begin{equation*}
+        \sum_{k=0}^{n} \binom{n}{k}^2 = \binom{2n}{n}. 
+    \end{equation*}
+    for all positive integers $n$. 
+    \begin{solution}
+        \begin{storyproof}
+            Take $2n$ people and partition them into two groups of size $n$, denoted A and B. 
+            The right-hand side is the number of ways to choose $n$ out of $2n$ people, with order not mattering. 
+            The left-hand side counts the same thing in a different way, by choosing $n$ people from different groups. 
+
+            The number of groups of size $k$ in group A is $\binom{n}{k}$, and the number of groups of size $n-k$ in group B is $\binom{n}{n-k}$, which is the same as $\binom{n}{k}$. 
+            Then by the multiplication rule, there are $\smash{\binom{n}{k}^2}$ ways to choose $n$ people from groups A and B, when $k$ people are chosen from group A and the remainder from group B, and the sum of them counts all possibilities of choosing $n$ people from $2n$ people, since every way of choosing $n$ people corresponds to exactly one value of $k$. 
+        \end{storyproof}
+    \end{solution}
+    \item %18
+    Give a story proof that 
+    \begin{equation*}
+        \sum_{k=1}^{n} k \binom{n}{k}^2 = n \binom{2n-1}{n-1}, 
+    \end{equation*}
+    for all positive integers $n$. 
+    
+    Hint: Consider choosing a committee of size $n$ from two groups of size $n$ each, where only one of the two groups has people eligible to become the chair of the committee. 
+    \begin{solution}
+        \begin{storyproof}
+            Consider $2n$ people and separate them into two groups of size $n$, denoted A and B. 
+            A committee of size $n$ will be chosen from these $2n$ people, where only group A has people eligible to become the chair of the committee. 
+            To specify a possibility, we could first choose the chair of the committee and then choose the remaining $n-1$ members of the committee from the remaining $2n-1$ people; this gives the right-hand side. 
+            Equivalently, we could first choose the $k$ committee members from group A and choose one of them to be the chair of the committee, and then choose the remaining $n-k$ members from group B; this gives the left-hand side by the multiplication rule. 
+        \end{storyproof}
+    \end{solution}
+    \item %19
+    Give a story proof that 
+    \begin{equation*}
+        \sum_{k=2}^{n} \binom{k}{2} \binom{n-k+2}{2} = \binom{n+3}{5}, 
+    \end{equation*}
+    for all integers $n \geq 2$. 
+
+    Hint: Consider the middle number in a subset of $\{ 1, 2, \dots, n+3 \}$ of size 5. 
+    \begin{solution}
+        \begin{storyproof}
+            Take $n+3$ people, and assign them ID numbers from 1 to $n+3$. 
+            The right-hand side is the number of ways to choose $5$ out of $n+3$ people, with order not mattering. 
+            Equivalently, to specify a possibility, we could choose a team of size 5, where the members are sorted by their ID numbers, out of $n+3$ people by doing as follows. 
+            We first fix the middle number, saying $k+1 \geq 3$, i.e., $k \geq 2$, and then choose the two members from the $k$ people with smaller IDs and the other two members from the $(n+3)-(k+1) = n-k+2$ people with larger IDs; this gives the left-hand side by the multiplication rule, since every way of choosing $5$ people corresponds to exactly one value of $k$. 
+        \end{storyproof}
+    \end{solution}
+    \item %20
+    \ea{
+        \item[\llap{\oS\ (a)\kern -7pt}]
+        \hspace{0.5em} Show using a story proof that 
+        \begin{equation*}
+            \binom{k}{k} + \binom{k+1}{k} + \binom{k+2}{k} + \cdots + \binom{n}{k} = \binom{n+1}{k+1}, 
+        \end{equation*}
+        where $n$ and $k$ are positive integers with $n \geq k$. 
+        This is called the \textit{hockey stick identity}. 
+
+        Hint: Imagine arranging a group of people by age, and then think about the oldest person in a chosen subgroup. 
+        \item[(b)] 
+        Suppose that a large pack of Haribo gummi bears can have anywhere between 30 and 50 gummi bears. 
+        There are 5 delicious flavors: pineapple (clear), raspberry (red), orange (orange), strawberry (green, mysteriously), and lemon (yellow). 
+        There are 0 non-delicious flavors. 
+        How many possibilities are there for the composition of such a pack of gummi bears? 
+        You can leave your answer in terms of a couple binomial coefficients, but not a sum of lots of binomial coefficients. 
+    }
+    \begin{Solution}
+        \ea{
+            \item 
+            \begin{storyproof}
+                Consider choosing $k+1$ people out of a group of $n+1$ people. 
+                Call the oldest person in the subgroup ``Aemon.'' 
+                If Aemon is also the oldest person in the full group, then there are $\binom{n}{k}$ choices for the rest of the subgroup, since we fixed one of the $k+1$ people. 
+                If Aemon is the second oldest in the full group, then there are $\binom{n-1}{k}$ choices since the oldest person in the full group can't be chosen and we fixed one of the $k+1$ people. 
+                In general, if there are $j$ people in the full group who are younger than Aemon, then there are $\binom{j}{k}$ possible choices for the rest of the subgroup. 
+                Thus, 
+                \begin{equation*}
+                    \sum_{j=k}^{n} \binom{j}{k} = \binom{n+1}{k+1}. 
+                \end{equation*}
+            \end{storyproof}
+            \item 
+            For a pack of $i$ gummi bears, there are $\binom{5+i-1}{i} = \binom{i+4}{i} = \binom{i+4}{4}$ possibilities since the situation is equivalent to getting a sample of size $i$ from the $n = 5$ flavors (with replacement, and with order not mattering). 
+            So the total number of possibilities is 
+            \begin{equation*}
+                \sum_{i=30}^{50} \binom{i+4}{4} = \sum_{j=34}^{54} \binom{j}{4}. 
+            \end{equation*}
+            Applying the previous part, we can simplify this by writing 
+            \begin{equation*}
+                \sum_{j=34}^{54} \binom{j}{4} = \sum_{j=4}^{54} \binom{j}{4} - \sum_{j=4}^{33} \binom{j}{4} = \binom{55}{5} - \binom{34}{5}. 
+            \end{equation*}
+            (This works out to 3200505 possibilities!) 
+        }
+    \end{Solution}
+    \item %21
+    Define $\left\{{n \atop k}\right\}$ as the number of ways to partition $\{ 1, 2, \dots, n \}$ into $k$ nonempty subsets, or the number of ways to have $n$ students split up into $k$ groups such that each group has at least one student. 
+    For example, $\smash{\left\{{4 \atop 2}\right\} = 7}$ because we have the following possibilities. 
+    \begin{equation*}
+        \begin{aligned}
+            \bullet &\{ 1 \}, \{ 2, 3, 4 \} \hspace{10em} \bullet \{ 1,2 \}, \{ 3, 4 \} \\
+            \bullet &\{ 2 \}, \{ 1, 3, 4 \} \hspace{10em} \bullet \{ 1,3 \}, \{ 2, 4 \} \\
+            \bullet &\{ 3 \}, \{ 1, 2, 4 \} \hspace{10em} \bullet \{ 1,4 \}, \{ 2, 3 \} \\
+            \bullet &\{ 4 \}, \{ 1, 2, 3 \} \hspace{10em} 
+        \end{aligned}
+    \end{equation*}
+    Prove the following identities: 
+    \ea{
+        \item 
+        \begin{equation*}
+            \left\{{n+1 \atop k}\right\} = \left\{{n \atop k-1}\right\} + k \left\{{n \atop k}\right\}
+        \end{equation*}
+        Hint: I'm either in a group by myself or I'm not. 
+        \item 
+        \begin{equation*}
+            \sum_{j=k}^{n} \binom{n}{j} \left\{{j \atop k}\right\} = \left\{{n+1 \atop k+1}\right\}. 
+        \end{equation*}
+        Hint: First decide how many people are not going to be in my group. 
+    }
+    \begin{solution}
+        \ea{
+            \item 
+            \begin{storyproof}
+                The left-hand side is the number of ways to have $n$ people and I split up into $k$ groups such that each group has at least one person. 
+                For the right-hand side, let's consider two situations. 
+                On the one hand, if I'm in a group by myself, then there are $\left\{{n \atop k-1}\right\}$ ways to have $n$ people split up into another $k-1$ groups such that each group has at least one person. 
+                On the other hand, if I'm not in a group by myself, then there are $\left\{{n \atop k}\right\}$ ways to have $n$ people split up into $k$ groups such that each group has at least one person, and I can go into any of the $k$ groups. 
+                So the total number of ways is $\left\{{n \atop k-1}\right\} + k \left\{{n \atop k}\right\}$, since I'm either in a group by myself or I'm not. 
+            \end{storyproof}
+            \item 
+            \begin{storyproof}
+                The right-hand side is the number of ways to have $n$ people and I split up into $k+1$ groups such that each group has at least one person. 
+                The left-hand side counts the same thing in a different way, by first deciding how many people are not going to be in my group. 
+
+                The number of ways to decide who are not in my group is $\binom{n}{j}$. 
+                Since my group has at least one person, we just need to count the ways to have the $j$ people split up into another $k$ groups such that each group has at least one person. 
+                This gives exactly $\smash{\binom{n}{j}\left\{{j \atop k}\right\}}$ ways to have $n+1$ people split up into $k+1$ groups such that each group has at least one person by the multiplication rule, when $j$ of them are not in my group. 
+                Then the summation gives the total number of ways to split up the $n+1$ people into $k+1$ groups such that each group has at least one person, since every partition corresponds to exactly one value of $j$ (the number of people not in my group). 
+            \end{storyproof}
+        }
+    \end{solution}
+    \item%22
+    The Dutch mathematician R.J. Stroeker remarked: \\
+    \textit{Every beginning student of number theory surely must have marveled at the miraculous fact that for each natural number $n$ the sum of the first $n$ positive consecutive cubes is a perfect square.} \\
+    Furthermore, it is the square of the sum of the first $n$ positive integers! 
+    That is 
+    \begin{equation*}
+        1^3 + 2^3 + \cdots + n^3 = (1 + 2 + \cdots + n)^2. 
+    \end{equation*}
+    Usually this identity is proven by induction, but that does not give much insight into why the result is true, nor does it help much if we wanted to compute the left-hand side but didn't already know this result. 
+    In this problem, you will give a story proof of the identity. 
+    \ea{
+        \item 
+        Give a story proof of the identity 
+        \begin{equation*}
+            1 + 2 + 3 + \cdots + n = \binom{n+1}{2}. 
+        \end{equation*}
+        Hint: Consider a round-robin tournament (see Exercise 4). 
+        \item 
+        Give a story proof of the identity
+        \begin{equation*}
+            1^3 + 2^3 + \cdots + n^3 = 6 \binom{n+1}{4} + 6 \binom{n+1}{3} + \binom{n+1}{2}. 
+        \end{equation*}
+        It is then just basic algebra (not required for this problem) to check that the square of the right-hand side in (a) is the right-hand side in (b). 
+
+        Hint: Imagine choosing a number between 1 and $n$ and then choosing 3 numbers between 0 and $n$ smaller than the original number, with replacement. 
+        Then consider cases based on how many distinct numbers were chosen. 
+    }
+    \begin{solution}
+        \ea{
+            \item
+            \begin{storyproof}
+                The right-hand side is the number of games between any of $2$ of the $n + 1$ tennis players in the round-robin tournament, on the one hand. 
+                The count is unordered, since for any two players, such as players 1 and 2, picking 1 and 2 to be in the game is the same as picking 2 and 1 to be in the game. 
+                On the other hand, in the round-robin tournament, the first player needs to play against another $n$ players, the second needs to play against remaining $n-1$ players (excluding the first player), and so on. 
+                The total number of games played gives the left-hand side. 
+            \end{storyproof}
+            \item 
+            \begin{storyproof}
+                Suppose we have a special, well-shuffled deck of $n+1$ cards which has $n+1$ numbers (from 0 to $n$). 
+                For the left-hand side, we consider a situation where we choose a card between 1 and $n$ from the deck, saying $k$, and then choose 3 cards between 0 to $k-1$ from the deck, with replacement. 
+                For each value of $k$, there are $k^3$ ways to make the choices, so the total number of the cases gives $\sum_{k=1}^{n}k^3$, i.e. the left-hand side. 
+
+                For the right-hand side, we consider the same situation, but partition the cases based on how many distinct numbers were chosen. 
+                \er{
+                    \item 
+                    If we have $4$ distinct numbers, then we have $\smash{6\binom{n+1}{4}}$ cases, since there are $\binom{n+1}{4}$ ways to choose 4 distinct numbers from $n+1$ cards, and $3! = 6$ ways to permute the 3 distinct numbers smaller than the greatest one in the hand. 
+                    \item 
+                    If we have $3$ distinct numbers, then we have $\smash{6\binom{n+1}{3}}$ cases, since there are $\binom{n+1}{3}$ ways to choose 3 distinct numbers from $n+1$ cards, $\smash{\binom{2}{1} = 2}$ ways to choose which of the 2 smaller numbers is chosen twice, and $\smash{\binom{3}{2}} = 3$ ways to permute these 3 cards. 
+                    \item 
+                    If we have $2$ distinct numbers, then we have $\binom{n+1}{2}$ cases, since there is only one way to choose and permute the 3 identical cards from the smaller number. 
+                }
+                Then the sum of these possibilities gives the right-hand side. 
+            \end{storyproof}
+        }
+    \end{solution}
+    \subsection{Naive definition of probability}
+    \item%23
+    Three people get into an empty elevator at the first floor of a building that has 10 floors. 
+    Each presses the button for their desired floor (unless one of the others has already pressed that button). 
+    Assume that they are equally likely to want to go to floors 2 through 10 (independently of each other). 
+    What is the probability that the buttons for 3 consecutive floors are pressed? 
+    \begin{solution}
+        Let $S$ be the sample space and $A$ be the event that the buttons for 3 consecutive floors are pressed. 
+        Each of the 3 people independently chooses a floor from 2 to 10, giving $9 \cdot 9 \cdot 9 = 729$ possible outcomes, so $|S| = 729$. 
+        There are 7 ways to choose 3 consecutive floors and each choice has $3! = 6$ ways to be pressed, since there are 3 people. 
+        Thus $|A| = 7 \cdot 6 = 42$. 
+        Therefore the probability that the buttons are pressed for 3 consecutive floors is 
+        \begin{equation*}
+            P(A) = \frac{|A|}{|S|} = \frac{42}{729} = \frac{14}{243}. 
+        \end{equation*}
+    \end{solution}
+    \item%24
+    \item%25
+    \item%26
+    A survey is being conducted in a city with 1 million residents. 
+    It would be far too expensive to survey all of the residents, so a random sample of size 1000 is chosen (in practice, there are many challenges with sampling, such as obtaining a complete list of everyone in the city, and dealing with people who refuse to participate). 
+    The survey is conducted by choosing people one at a time, \textit{with} replacement and with equal probabilities. 
+    \ea{
+        \item 
+        Explain how sampling with vs. without replacement here relates to the birthday problem. 
+        \item 
+        Find the probability that at least one person will get chosen more than once. 
+    }
+    \begin{solution}
+        \ea{
+            \item 
+            To relate sampling with replacement to the birthday problem, we can let each resident correspond to one of the 1 million distinct days and each sampled resident correspond to a birthday in the birthday problem. 
+            For example, if a certain resident is chosen exactly twice, that means the day corresponding to that resident occurred twice. 
+
+            To relate sampling without replacement to the birthday problem, we can again let each resident correspond to one of the 1 million distinct days and each sampled resident correspond to a birthday in the birthday problem. 
+            In this case, any two sampled residents must be different, which means that the day corresponding to each sampled resident must also be different. 
+            \item 
+            The naive definition says we just need to count the number of ways to choose 1000 participants from 1 million residents such that there is at least one person who get chosen more than once. 
+            But this counting problem is hard, since it could be Emma who get chosen twice, or Steve, or one person get chosen three times, or one person get chosen three times while another get chosen twice, or various other possibilities. 
+
+            Instead, we count the complement: the number of ways to choose 1000 participants from 1 million residents such that there is no one who get chosen more than once. 
+            This amounts to sampling the 1 million residents without replacement, so the number of possibilities is $10^6 \cdot (10^6-1) \cdots (10^6-1000+1)$. 
+            Therefore the probability that no one who get chosen more than once is 
+            \begin{equation*}
+                P(\text{no one more than once}) = \frac{10^6 \cdot (10^6-1) \cdots (10^6-1000+1)}{(10^6)^{1000}}, 
+            \end{equation*}
+            and the possibility that at least one person will get chosen more than once is 
+            \begin{equation*}
+                P(\text{at least one more than once}) = 1 - \frac{10^6 \cdot (10^6-1) \cdots (10^6-1000+1)}{(10^6)^{1000}}. 
+            \end{equation*}
+        }
+    \end{solution}
+    \item%27
+    A \textit{hash table} is a commonly used data structure in computer science, allowing for fast information retrieval. 
+    For example, suppose we want to store some people's phone numbers. 
+    Assume that no two of the people have the same name. 
+    For each name $x$, a \textit{hash function} $h$ is used, letting $h(x)$ be the location that will be used to store $x$'s phone number. 
+    After such a table has been computed, to look up $x$'s phone number one just recomputes $h(x)$ and then looks up what is stored in that location. 
+
+    The hash function $h$ is deterministic, since we don't want to get different results every time we compute $h(x)$. 
+    But $h$ is often chosen to be \textit{pseudorandom}. 
+    For this problem, assume that true randomness is used. 
+    Let there be $k$ people, with each person's phone number stored in a random location (with equal probabilities for each location, independently of where the other people's numbers are stored), represented by an integer between 1 and $n$. 
+    Find the probability that at least one location has more than one phone number stored there. 
+    \begin{solution}
+        The naive definition says we just need to count the number of ways to assign integers between 1 and $n$ to $k$ phone numbers such that there are two phone numbers that share a location. 
+        But this counting problem is hard, since it could be Emma's and Steve's who share a location, or Steve's and Naomi's, or all three of them, or the three of them could share a location while two others among the $k$ phone numbers share a different location, or various other possibilities. 
+
+        Instead, we count the complement: the number of ways to assign integers to $k$ phone numbers such that no two phone numbers share a location. 
+        This amounts to sampling the $n$ integers without replacement, so the number of possibilities is $n \cdot (n-1) \cdot (n-2) \cdots (n-k+1)$ for $k \leq n$. 
+        Therefore the probability that no two phone numbers share a location is 
+        \begin{equation*}
+            P(\text{no two share a location}) = \frac{n \cdot (n-1) \cdot (n-2) \cdots (n-k+1)}{n^k}, 
+        \end{equation*}
+        and the probability that at least one location has more than one phone number stored there is 
+        \begin{equation*}
+            P(\text{at least one share a location}) = 1 - \frac{n \cdot (n-1) \cdot (n-2) \cdots (n-k+1)}{n^k}. 
+        \end{equation*}
+    \end{solution}
+    \item%28
+    \item%29
+    \oS For each part, decide whether the blank should be filled in with $=$, $<$, or $>$, and give a clear explanation. 
+    \ea{
+        \item
+        (probability that the total after rolling 4 fair dice is 21) \underline{\hspace{6mm}} (probability that the total after rolling 4 fair dice is 22)
+        \item 
+        (probability that a random 2-letter word is a palindrome) \underline{\hspace{6mm}} (probability that a random 3-letter word is a palindrome) 
+    }
+    \begin{Solution}
+        \ea{
+            \item
+            \smash{\boxed{>}}. 
+            All \textit{ordered} outcomes are equally likely here. 
+            So for example with two dice, obtaining a total of 9 is more likely than obtaining a total of 10 since there are two ways to get a 5 and a 4, and only one way to get two 5's. 
+            To get a 21, the outcome must be a permutation of (6, 6, 6, 3) (4 possibilities), (6, 5, 5, 5) (4 possibilities), or (6, 6, 5, 4) ($4!/2 = 12$ possibilities). 
+            To get a 22, the outcome must be a permutation of (6, 6, 6, 4) (4 possibilities), or (6, 6, 5, 5) ($4!/2^2 = 6$ possibilities). 
+            So getting a 21 is more likely; in fact, it is exactly twice as likely as getting a 22. 
+            \item 
+            \smash{\boxed{=}}. 
+            The probabilities are equal, since for both 2-letter and 3-letter words, being a palindrome means that the first and last letter are the same. 
+        }
+    \end{Solution}
+    \item%30
+    \item%31
+    \oS Elk dwell in a certain forest. 
+    There are $N$ elk, of which a simple random sample of size $n$ are captured and tagged (``simple random sample'' means that all $\binom{N}{n}$ sets of $n$ elk are equally likely). 
+    The captured elk are returned to the population, and then a new sample is drawn, this time with size $m$. 
+    This is an important method that is widely used in ecology, known as \textit{capture-recapture}. 
+    What is the probability that exactly $k$ of the $m$ elk in the new sample were previously tagged? 
+    (Assume that an elk that was captured before doesn't become more or less likely to be captured again.) 
+    \begin{Solution}
+        We can use the naive definition here since we're assuming all samples of size $m$ are equally likely. 
+        To have exactly $k$ be tagged elk, we need to choose $k$ of the $n$ tagged elk, and then $m - k$ from the $N - n$ untagged elk. 
+        So the probability is 
+        \begin{equation*}
+            \frac{\binom{n}{k} \cdot \binom{N}{n-k}}{\binom{N}{n}}, 
+        \end{equation*}
+        for $k$ such that $0 \leq k \leq n$ and $0 \leq m - k \leq N - n$, and the probability is 0 for all other values of $k$ (for example, if $k > n$ the probability is 0 since then there aren't even $k$ tagged elk in the entire population!). 
+        This is known as a \textit{Hypergeometric} probability; we will encounter it again in Chapter 3. 
+    \end{Solution}
+    \item%32
+    \item%33
+    \oS A jar contains $r$ red balls and $g$ green balls, where $r$ and $g$ are fixed positive integers. 
+    A ball is drawn from the jar randomly (with all possibilities equally likely), and then a second ball is drawn randomly. 
+    \ea{
+        \item 
+        Explain intuitively why the probability of the second ball being green is the same as the probability of the first ball being green. 
+        \item 
+        Define notation for the sample space of the problem, and use this to compute the probabilities from (a) and show that they are the same. 
+        \item 
+        Suppose that there are 16 balls in total, and that the probability that the two balls are the same color is the same as the probability that they are different colors. 
+        What are $r$ and $g$ (list all possibilities)? 
+    }
+    \begin{Solution}
+        \ea{
+            \item 
+            This is true by \textit{symmetry}. 
+            The first ball is equally likely to be any of the $g + r$ balls, so the probability of it being green is $g/(g +r)$. 
+            But the second ball is also equally likely to be any of the $g + r$ balls (there aren't certain balls that enjoy being chosen second and others that have an aversion to being chosen second); once we know whether the first ball is green we have information that affects our uncertainty about the second ball, but before we have this information, the second ball is equally likely to be any of the balls.
+
+            Alternatively, intuitively it shouldn't matter if we pick one ball at a time, or take one ball with the left hand and one with the right hand at the same time. 
+            By symmetry, the probabilities for the ball drawn with the left hand should be the same as those for the ball drawn with the right hand. 
+            \item 
+            Label the balls as $1, 2, \dots, g + r$, such that $1, 2, \dots, g$ are green and $g + 1, \dots, g + r$ are red. 
+            The sample space can be taken to be the set of all pairs $(a, b)$ with $a, b \in \{ 1, \dots, g +r\}$ and $a \neq b$ (there are other possible ways to define the sample space, but it is important to specify all possible outcomes using clear notation, and it make sense to be as richly detailed as possible in the specification of possible outcomes, to avoid losing information). 
+            Each of these pairs is equally likely, so we can use the naive definition of probability. 
+            Let $G_i$ be the event that the $i$th ball drawn is green. 
+
+            The denominator is $(g+r)(g+r-1)$ by the multiplication rule. 
+            For $G_1$, the numerator is $g(g + r -1)$, again by the multiplication rule. 
+            For $G_2$, the numerator is also $g(g + r - 1)$, since in counting favorable cases, there are $g$ possibilities for the second ball, and for each of those there are $g + r - 1$ favorable possibilities for the first ball (note that the multiplication rule doesn't require the experiments to be listed in chronological order!); alternatively, there are $g(g - 1) + rg = g(g + r - 1)$ favorable possibilities for the second ball being green, as seen by considering 2 cases (first ball green and first ball red). 
+            Thus, 
+            \begin{equation*}
+                P(G_i) = \frac{g(g + r - 1)}{(g + r)(g + r -1)} = \frac{g}{g + r}, 
+            \end{equation*}
+            for $i \in \{ 1, 2 \}$, which concurs with (a). 
+            \item 
+            Let $A$ be the event of getting one ball of each color. 
+            In set notation, we can write $A = (G_1 \cap G_2^c) \cup (G_1^c \cap G_2)$. 
+            We are given that $P(A) = P(A^c)$, so $P(A) = 1/2$. 
+            Then
+            \begin{equation*}
+                P(A) = \frac{2gr}{(g + r)(g + r -1)} = \frac{1}{2}, 
+            \end{equation*}
+            giving the quadratic equation 
+            \begin{equation*}
+                g^2 + r^2 - 2gr - g - r = 0, 
+            \end{equation*}
+            i.e., 
+            \begin{equation*}
+                (g - r)^2 = g + r. 
+            \end{equation*}
+            But $g + r = 16$, so $g - r$ is 4 or $- 4$. 
+            Thus, either $g = 10, r = 6$, or $g = 6, r = 10$. 
+        }
+    \end{Solution}
+    \item%34
+    \item%35
+    \item%36
+    \item%37
+    A deck of cards is shuffled well. 
+    The cards are dealt one by one, until the first time an ace appears. 
+    \ea{
+        \item 
+        Find the probability that no kings, queens, or jacks appear before the first ace. 
+        \item 
+        Find the probability that exactly one king, exactly one queen, and exactly one jack appear (in any order) before the first ace. 
+    }
+    \begin{solution}
+        \ea{
+            \item 
+            In fact, we only need to consider the 16 key cards: 4 aces, 4 kings, 4 queens, and 4 jacks, and count the probability that an ace is dealt first, since the other cards have nothing to do with this problem. 
+            Let $S$ be the sample space and $A$ be the event that an ace appears before any king, queen, or jack. 
+            All 16 cards are equally likely to be dealt, giving $16!$ possible outcomes, so $|S| = 16!$. 
+            There are 4 choices for the first ace and each choice has $15!$ ways to arrange the remaining cards. 
+            Thus $|A| = 4 \cdot 15!$. 
+            Therefore the probability that no kings, queens, or jacks appear before the first ace is 
+            \begin{equation*}
+                P(A) = \frac{|A|}{|S|} = \frac{4 \cdot 15!}{16!} = \frac{1}{4}. 
+            \end{equation*}
+            \item 
+            Under the circumstances of Part (a), we put the emphasis on the first 4 cards dealt, and count the probability that an ace appears last, with the three preceding cards being exactly 1 king, 1 queen, and 1 jack. 
+            Let $B$ be this event. 
+            There are $3! = 6$ ways to arrange the three cards preceding the ace, and each of these arrangements has $\smash{\binom{4}{1}^4 = 4^4}$ ways to choose the desired cards (king, queen, jack and ace). 
+            Thus $|B| = 3! \cdot 4^4 \cdot 12!$, since there are 12 remaining cards to be arranged. 
+            Therefore the probability that exactly one king, exactly one queen, and exactly one jack appear (in any order) before the first ace is 
+            \begin{equation*}
+                P(B) = \frac{|B|}{|S|} = \frac{3! \cdot 4^4 \cdot 12!}{16!} = \frac{16}{455}. 
+            \end{equation*}
+        }
+    \end{solution}
+    \item%38
+    \item%39
+    An organization with $2n$ people consists of $n$ married couples. 
+    A committee of size $k$ is selected, with all possibilities equally likely. 
+    Find the probability that there are exactly $j$ married couples within the committee. 
+    \begin{solution}
+        Let $S$ be the sample space and $A$ be the event that there are exactly $j$ married couples within the committee. 
+        Each of the $2n$ people is equally likely to be selected, so $\smash{|S| = \binom{2n}{k}}$. 
+        There are $\binom{n}{j}$ ways to choose the $j$ married couples, and each of these choices has $\smash{\binom{n - j}{k - 2j} \cdot 2^{k-2j}}$ ways to choose the couples from which the remaining $k - 2j$ individuals will come, since each of these selected couples has two people, and either one is equally likely to be chosen. 
+        By the multiplication rule, this gives $|A| = \binom{n}{j} \cdot \binom{n-j}{k-2j} \cdot 2^{k-2j}$. 
+        Therefore the probability that there are exactly $j$ married couples within the committee is 
+        \begin{equation*}
+            P(A) = \frac{|A|}{|S|} = \frac{\binom{n}{j} \cdot \binom{n-j}{k-2j} \cdot 2^{k-2j}}{\binom{2n}{k}}. 
+        \end{equation*}
+    \end{solution}
+    \item%40
+    \item%41
+    \item%42
+    \oS A \textit{norepeatword} is a sequence of at least one (and possibly all) of the usual 26 letters a, b, c, $\dots$, z, with repetitions not allowed. 
+    For example, ``course'' is a norepeatword, but ``statistics'' is not. 
+    Order matters, e.g., ``course'' is not the same as ``source''. 
+
+    A norepeatword is chosen randomly, with all norepeatwords equally likely. 
+    Show that the probability that it uses all 26 letters is very close to $1/e$. 
+    \begin{Solution}
+        The number of norepeatwords having all 26 letters is the number of ordered arrangements of 26 letters: 26!. 
+        To construct a norepeatword with $k \leq 26$ letters, we first select $k$ letters from the alphabet ($\smash{\binom{26}{k}}$ selections) and then arrange them into a word ($k!$ arrangements). 
+        Hence there are $\smash{\binom{26}{k}} k!$ norepeatwords with $k$ letters, with $k$ ranging from 1 to 26. 
+        With all norepeatwords equally likely, we have
+        \begin{equation*}
+            \begin{aligned}
+                P(\text{norepeatword having all 26 letters)} &= \frac{\text{\# norepeatwords having all 26 letters}}{\text{\# norepeatwords}} \\ 
+                &= \frac{26!}{\sum_{k=1}^{26}\binom{26}{k}k!} = \frac{26!}{\sum_{k=1}^{26}\frac{26!}{k!(26-k)!}k!}  \\
+                &= \frac{1}{\frac{1}{25!} + \frac{1}{24!} + \cdots + \frac{1}{1!} + 1}. 
+            \end{aligned}
+        \end{equation*}
+        The denominator is the first 26 terms in the Taylor series $e^x = 1 + x + x^2/2! + \dots$, evaluated at $x = 1$. 
+        Thus the probability is approximately $1/e$ (this is an extremely good approximation since the series for $e$ converges very quickly; the approximation for $e$ differs from the truth by less than $10^{-26}$). 
+    \end{Solution}
+    \subsection{Axioms of probability}
+    \item%43
+    Show that for any events $A$ and $B$, 
+    \begin{equation*}
+        P(A) + P(B) - 1 \leq P(A \cap B) \leq P(A \cup B) \leq P(A) + P(B). 
+    \end{equation*}
+    For each of these three inequalities, give a simple criterion for when the inequality is actually an equality (e.g., give a simple condition such that $P(A \cap B) = P(A \cup B)$ if and only if the condition holds). 
+    \begin{solution}
+        \begin{Proof}
+            For the first inequality, we have 
+            \begin{equation*}
+                P(A \cup B) = P(A) + P(B) - P(A \cap B) 
+            \end{equation*}
+            by the third property of probability. Since $P(A \cup B) \leq 1$, this gives 
+            \begin{equation*}
+                P(A) + P(B) - 1 \leq P(A \cap B). 
+            \end{equation*}
+            The equality holds if and only if $P(A \cup B) = 1$. 
+
+            For the second inequality, since $A \cap B \subseteq A \cup B$, the second property of probability gives 
+            \begin{equation*}
+                P(A \cap B) \leq P(A \cup B). 
+            \end{equation*}
+            The equality holds if and only if $A \cap B = A \cup B$, i.e., $A = B$. 
+
+            For the third inequality, we again have 
+            \begin{equation*}
+                P(A \cup B) = P(A) + P(B) - P(A \cap B) 
+            \end{equation*}
+            by the third property of probability. Since $P(A \cap B) \geq 0$, this gives 
+            \begin{equation*}
+                P(A \cup B) \leq P(A) + P(B). 
+            \end{equation*}
+            The equality holds if and only if $P(A \cap B) = 0$. 
+        \end{Proof}
+    \end{solution}
+    \item%44
+    \item%45
+    Let $A$ and $B$ be events. 
+    The \textit{symmetric difference} $A \triangle B$ is defined to be the set of all elements that are in $A$ or $B$ but not both. 
+    In logic and engineering, this event is also called the $XOR$ (\textit{exclusive or}) of $A$ and $B$. 
+    Show that 
+    \begin{equation*}
+        P(A \triangle B) = P(A) + P(B) - 2 P(A \cap B), 
+    \end{equation*}
+    directly using the axioms of probability. 
+    \begin{solution}
+        \begin{Proof}
+            By definition, the symmetric difference $A \triangle B$ can be rewritten as 
+            \begin{equation*}
+                A \triangle B = [A \cap (A \cap B)^c] \cup [(A \cap B)^c \cap B]. 
+            \end{equation*}
+            Since $A \cap (A \cap B)^c$ and $(A \cap B)^c \cap B$ are disjoint, we have 
+            \begin{equation*}
+                P(A \triangle B) = P(A \cap (A \cap B)^c) + P((A \cap B)^c \cap B). 
+            \end{equation*}
+            By the third property of probability, we have
+            \begin{equation*}
+                \begin{aligned}
+                P(A \triangle B) = \quad &[P(A) + P((A \cap B)^c) - P(A \cup (A \cap B)^c)] \\
+                + &[P((A \cap B)^c) + P(B) - P((A \cap B)^c \cup B)]. 
+                \end{aligned}
+            \end{equation*}
+            Note that $A \cup (A \cap B)^c$ and $(A \cap B)^c \cup B$ are both the entire sample space, so $P(A \cup (A \cap B)^c) = P((A \cap B)^c \cup B) = 1$. 
+            By the first property of probability, this gives 
+            \begin{equation*}
+                \begin{aligned}
+                P(A \triangle B) &= [P(A) + 1 - P(A \cap B) - 1] + [1 - P(A \cap B) + P(B) - 1] \\
+                    &= P(A) + P(B) - 2 P(A \cap B).
+                \end{aligned}
+            \end{equation*}
+        \end{Proof}
+    \end{solution}
+    \item%46
+    \item%47
+    Events $A$ and $B$ are \textit{independent} if $P(A \cap B) = P(A)P(B)$ (independence is explored in detail in the next chapter). 
+    \ea{
+        \item 
+        Give an example of independent events $A$ and $B$ in a finite sample space $S$ (with neither equal to $\emptyset$ or $S$), and illustrate it with a Pebble World diagram. 
+        \item 
+        Consider the experiment of picking a random point in the rectangle 
+        \begin{equation*}
+            R = \{ (x, y): 0 < x < 1, 0 < y < 1 \}, 
+        \end{equation*}
+        where the probability of the point being in any particular region contained within $R$ is the area of that region. 
+        Let $A_1$ and $B_1$ be rectangles contained within $R$, with areas not equal to 0 or 1. 
+        Let $A$ be the event that the random point is in $A_1$, and $B$ be the event that the random point is in $B_1$. 
+        Give a geometric description of when it is true that $A$ and $B$ are independent. 
+        Also, give an example where they are independent and another example where they are not independent. 
+        \item 
+        Show that if $A$ and $B$ are independent, then
+        \begin{equation*}
+            P(A \cup B) = P(A) + P(B) - P(A)P(B) = 1 - P(A^c)P(B^c). 
+        \end{equation*}
+    }
+    \begin{solution}
+        \ea{
+            \item 
+            Consider a class of 9 students seated in a $3 \times 3$ grid, where each student is equally likely to be selected. 
+            Let $A$ and $B$ be the events that a selected student is from the first two rows and the first two columns, respectively. 
+            It follows that $P(A) = P(B) = 6/9 = 2/3$, and the probability that the selected student is from both the first two rows and first two columns is $P(A \cap B) = 4/9$. 
+            Since $P(A \cap B) = P(A)P(B) = 4/9$, events $A$ and $B$ satisfy the definition of independence. 
+
+            {\centering
+            \vspace{1em}
+            \begin{tikzpicture}[every node/.style={draw, ellipse, minimum width=1.3cm, minimum height=1.1cm}]
+                \draw (0,0) rectangle (7.8,5.8);
+                
+                \foreach \x in {1.5,3.9,6.3}
+                \foreach \y in {1.2,2.9,4.6}
+                \node at (\x,\y) {};
+                
+                \draw[black, thick] (0.6,5.5) rectangle (7.2,2); 
+                \node[draw=none, ellipse=false, font=\huge] at (5.35,4.6) {$A$};
+                \draw[black, dashed, line width=0.4mm, dash pattern=on 2mm off 1.5mm] (0.5,0.3) rectangle (5,5.4); 
+                \node[draw=none, ellipse=false, font=\huge] at (2.7,1.15) {$B$};
+            \end{tikzpicture}
+            \par} 
+            \item 
+            Since events $A$ and $B$ are independent, by definition $P(A \cap B) = P(A)P(B)$. 
+            Geometrically, this means the area of the intersection of $A_1$ and $B_1$ must equal the product of the areas of $A_1$ and $B_1$. 
+            \er{
+                \item 
+                Let $A_1 = \{ (x_1, y_1): 0 < x_1 < 1, 1/3 < y_1 < 1 \}$ and $B_1 = \{ (x_2, y_2): 0 < x_2 < 2/3, 0 < y_2 < 1 \}$. 
+                Then 
+                \begin{equation*}
+                    P(A) = (1 - 0) \cdot (1 - 1/3) = \frac{2}{3} \quad \text{and} \quad P(B) = (2/3 - 0) \cdot (1 - 0) = \frac{2}{3}. 
+                \end{equation*}
+                The intersection is 
+                \begin{equation*}
+                    A \cap B = \{ (x_3, y_3): 0 < x_3 < 2/3, 1/3 < y_3 < 1 \}. 
+                \end{equation*}
+                So 
+                \begin{equation*}
+                    P(A \cap B) = (2/3 - 0) \cdot (1 - 1/3) = \frac{4}{9}. 
+                \end{equation*}
+                Since $P(A \cap B) = \frac{4}{9} = P(A)P(B)$, events $A$ and $B$ are independent. 
+                \item 
+                Let $A_1 = \{ (x_1, y_1): 0 < x_1 < 1, 1/3 < y_1 < 1 \}$, and $B_1 = \{ (x_2, y_2): 0 < x_2 < 1, 0 < y_2 < 2/3 \}$. 
+                Then 
+                \begin{equation*}
+                 P(A) = (1 - 0) \cdot (1 - 1/3) = \frac{2}{3} \quad \text{and} \quad P(B) = (1 - 0) \cdot (2/3 - 0) = \frac{2}{3}. 
+                \end{equation*}
+                The intersection is
+                \begin{equation*}
+                A \cap B = \{ (x_3, y_3): 0 < x_3 < 1, 1/3 < y_3 < 2/3 \}.                     
+                \end{equation*}
+                So 
+                \begin{equation*}
+                    P(A \cap B) = (1 - 0) \cdot (2/3 - 1/3) = \frac{1}{3}. 
+                \end{equation*}
+                Since $P(A \cap B) = \frac{1}{3} \neq \frac{4}{9} = P(A)P(B)$, events $A$ and $B$ are not independent. 
+            }
+            \item 
+            \begin{Proof}
+                Since events $A$ and $B$ are independent, by definition $P(A \cap B) = P(A) P(B)$. 
+                By the third property of probability, we immediately have 
+                \begin{equation*}
+                    P(A \cup B) = P(A) + P(B) - P(A)P(B). 
+                \end{equation*}
+                Next, we rewrite the right-hand side by algebraic manipulation; this gives 
+                \begin{equation*}
+                    \begin{aligned}
+                    P(A) + P(B) - P(A)P(B) &= P(A) + P(B) - P(A)P(B) - 1 + 1 \\
+                    &= (P(A) - 1)(1 - P(B)) + 1 \\
+                    &= 1 - (1 - P(A))(1 - P(B)) \\
+                    &= 1 - P(A^c)P(B^c)
+                    \end{aligned}
+                \end{equation*}
+                by the first property of probability. 
+            \end{Proof}
+        }
+    \end{solution}
+    \item%48
+    \oS Arby has a belief system assigning a number $P_{\text{Arby}}(A)$ between 0 and 1 to every event $A$ (for some sample space). 
+    This represents Arby's degree of belief about how likely $A$ is to occur. 
+    For any event $A$, Arby is willing to pay a price of $1000 \cdot P_{\text{Arby}}(A)$ dollars to buy a certificate such as the one shown below: \\
+    {\begin{center}
+    \fbox{
+    \parbox{0.8\textwidth}{
+        \textbf{Certificate} \\[1em]
+        The owner of this certificate can redeem it for \$1000 if $A$ occurs. 
+        No value if $A$ does not occur, except as required by federal, state, or local law. 
+        No expiration date.
+    }}\end{center}}
+    Likewise, Arby is willing to sell such a certificate at the same price. 
+    Indeed, Arby is willing to buy or sell any number of certificates at this price, as Arby considers it the ``fair'' price. 
+
+    Arby stubbornly refuses to accept the axioms of probability. 
+    In particular, suppose that there are two \textit{disjoint} events $A$ and $B$ with 
+    \begin{equation*}
+        P_{\text{Arby}}(A \cup B) \neq P_{\text{Arby}}(A) + P_{\text{Arby}}(B). 
+    \end{equation*}
+    Show how to make Arby go bankrupt, by giving a list of transactions Arby is willing to make that will \textit{guarantee} that Arby will lose money (you can assume it will be known whether $A$ occurred and whether $B$ occurred the day after any certificates are bought/sold). 
+    \begin{Solution}
+        Suppose first that
+        \begin{equation*}
+            P_{\text{Arby}}(A \cup B) < P_{\text{Arby}}(A) + P_{\text{Arby}}(B). 
+        \end{equation*}
+        Call a certificate like the one show above, with any event $C$ in place of $A$, a $C$-certificate. 
+        Measuring money in units of thousands of dollars, Arby is willing to pay 
+        $P_{\text{Arby}}(A) + P_{\text{Arby}}(B)$ to buy an $A$-certificate and a $B$-certificate, and is willing to sell an $(A \cup B)$-certificate for $P_{\text{Arby}}(A \cup B)$. 
+        In those transactions, Arby loses $P_{\text{Arby}}(A) + P_{\text{Arby}}(B) - P_{\text{Arby}}(A \cup B)$ and will not recoup any of that loss because if $A$ or $B$ occurs, Arby will have to pay out an amount equal to the amount Arby receives (since it's impossible for both $A$ and $B$ to occur).
+
+        Now suppose instead that 
+        \begin{equation*}
+            P_{\text{Arby}}(A \cup B) > P_{\text{Arby}}(A) + P_{\text{Arby}}(B). 
+        \end{equation*}
+        Measuring money in units of thousands of dollars, Arby is willing to sell an $A$-certificate for $P_{\text{Arby}}(A)$, sell a $B$-certificate for $P_{\text{Arby}}(B)$, and buy a $(A \cup B)$-certificate for $P_{\text{Arby}}(A \cup B)$. 
+        In so doing, Arby loses $P_{\text{Arby}}(A \cup B) - (P_{\text{Arby}}(A) - P_{\text{Arby}}(B))$, and Arby won't recoup any of this loss, similarly to the above. 
+        (In fact, in this case, even if $A$ and $B$ are not disjoint, Arby will not recoup any of the loss, and will lose more money if both $A$ and $B$ occur.) 
+
+        By buying/selling a sufficiently large number of certificates from/to Arby as described above, you can guarantee that you'll get all of Arby's money; this is called an \textit{arbitrage opportunity}. 
+        This problem illustrates the fact that the axioms of probability are not arbitrary, but rather are \textit{essential} for coherent thought (at least the first axiom, and the second with finite unions rather than countably infinite unions). 
+
+        \textit{Arbitrary axioms allow arbitrage attacks; principled properties and perspectives on probability potentially prevent perdition.} 
+    \end{Solution}
+    \subsection{Inclusion-exclusion} 
+    \item%49
+    \item%50
+    \oS A card player is dealt a 13-card hand from a well-shuffled, standard deck of cards. 
+    What is the probability that the hand is void in at least one suit (``void in a suit'' means having no cards of that suit)? 
+    \begin{Solution}
+        Let $S, H, D, C$ be the events of being void in Spades, Hearts, Diamonds, Clubs, respectively. 
+        We want to find $P(S \cup D \cup H \cup C)$. 
+        By inclusion-exclusion and symmetry, 
+        \begin{equation*}
+            P(S \cup D \cup H \cup C) = \binom{4}{1} P(S) - \binom{4}{2} P(S \cap D) + \binom{4}{3} P(S \cap D \cap H) - \binom{4}{4} P(S \cap D \cap H \cap C). 
+        \end{equation*}
+        The probability of being void in a specific suit is $\smash{\frac{\binom{39}{13}}{\binom{52}{13}}}$. 
+        The probability of being void in 2 specific suits is $\frac{\binom{26}{13}}{\binom{52}{13}}$. 
+        The probability of being void in 3 specific suits is $\frac{\binom{13}{13}}{\binom{52}{13}}$. 
+        And the last term is 0 since it's impossible to be void in everything. 
+        So the probability is 
+        \begin{equation*}
+            4 \frac{\binom{39}{13}}{\binom{52}{13}} - 6 \frac{\binom{26}{13}}{\binom{52}{13}} + 4 \frac{\binom{13}{13}}{\binom{52}{13}} \approx 0.051. 
+        \end{equation*}
+    \end{Solution}
+    \item%51
+    \item%52
+    \item%53
+    Fred needs to choose a password for a certain website. 
+    Assume that he will choose an 8-character password, and that the legal characters are the lowercase letters a, b, c, $\dots$, z, the uppercase letters A, B, C, $\dots$, Z, and the numbers 0, 1, $\dots$, 9. 
+    \ea{
+        \item 
+        How many possibilities are there if he is required to have at least one lowercase letter in his password? 
+        \item 
+        How many possibilities are there if he is required to have at least one lowercase letter and at least one uppercase letter in his password? 
+        \item 
+        How many possibilities are there if he is required to have at least one lowercase letter, at least one uppercase letter, and at least one number in his password? 
+    }
+    \begin{solution}
+        \ea{
+            \item 
+            Let's count the complement: the number of possibilities if he is not required to have at least one lowercase letter. 
+            This amounts to counting the number of possibilities that he doesn't have a lowercase letter in his password, so the number of possibilities of which is $36^8$, since such passwords can only use uppercase letters and numbers. 
+            Therefore the number of possibilities if he is required to have at least one lowercase letter in his password is 
+            \begin{equation*}
+                62^8 - 36^8 = 215518995677440. 
+            \end{equation*}
+            \item 
+            Let $S$ be a sample space, and $L, U$ be the events of having no lowercase letters and no uppercase letters in his password, respectively. 
+            We want to find $|S - (L \cup U)|$. 
+            By inclusion-exclusion, 
+            \begin{equation*}
+                |S - (L \cup U)| = |S - (L + U - L \cap U)| = |S| - |L| - |U| + |L \cap U|. 
+            \end{equation*}
+            The number of possibilities of $L$ is $36^8$. 
+            The number of possibilities of $U$ is $36^8$. 
+            The number of possibilities of $L \cap U$ is $10^8$. 
+            So the number of possibilities if he is required to have at least one lowercase letter and at least one uppercase letter in his password is 
+            \begin{equation*}
+                62^8 - 36^8 - 36^8 + 10^8 = 212697985769984. 
+            \end{equation*}
+            \item 
+            Under the circumstances of Part (b), let $N$ be the event of having no numbers in his password. 
+            We want to find $|S - (L \cup U \cup N)|$. 
+            By inclusion-exclusion, 
+            \begin{equation*}
+                \begin{aligned}
+                    &|S - (L \cup U \cup N)| \\
+                    = &|S - (L + U + N - L \cap U - L \cap N - U \cap N + L \cap U \cap N)|. \\
+                    = &|S| - |L| - |U| - |N| + |L \cap U| + |L \cap N| + |U \cap N| - |L \cap U \cap N|.
+                \end{aligned}
+            \end{equation*}
+            The numbers of possibilities of $L$ and $U$ are both $36^8$. 
+            The number of possibilities of $N$ is $52^8$. 
+            The number of possibilities of $L \cap U$ is $10^8$. 
+            The numbers of possibilities of $L \cap N$ and $U \cap N$ are both $26^8$. 
+            The number of possibilities of $L \cap U \cap N$ is $0$ since it's impossible to avoid all three of them. 
+            So the number of possibilities if he is required to have at least one lowercase letter, at least one uppercase letter, and at least one number in his password is 
+            \begin{equation*}
+                62^8 - 36^8 - 36^8 - 52^8 + 10^8 + 26^8 + 26^8 - 0 = 159655911367680. 
+            \end{equation*}
+        }
+    \end{solution}
+    \item%54
+    \oS Alice attends a small college in which each class meets only once a week. 
+    She is deciding between 30 non-overlapping classes. 
+    There are 6 classes to choose from for each day of the week, Monday through Friday. 
+    Trusting in the benevolence of randomness, Alice decides to register for 7 randomly selected classes out of the 30, with all choices equally likely. 
+    What is the probability that she will have classes every day, Monday through Friday? 
+    (This problem can be done either directly using the naive definition of probability, or using inclusion-exclusion.) 
+    \begin{Solution}
+        We will solve this both by direct counting and using inclusion-exclusion. 
+
+        \textit{Direct Counting Method}: There are two general ways that Alice can have class every day: either she has 2 days with 2 classes and 3 days with 1 class, or she has 1 day with 3 classes, and has 1 class on each of the other 4 days. 
+        The number of possibilities for the former is $\smash{\binom{5}{2} \binom{6}{2}^2 6^3}$ (choose the 2 days when she has 2 classes, and then select 2 classes on those days and 1 class for the other days). 
+        The number of possibilities for the latter is $\smash{\binom{5}{1} \binom{6}{3} 6^4}$. 
+        So the probability is
+        \begin{equation*}
+            \frac{\binom{5}{2} \binom{6}{2}^2 6^3 + \binom{5}{1} \binom{6}{3} 6^4}{\binom{30}{7}} = \frac{114}{377} \approx 0.302. 
+        \end{equation*}
+
+        \textit{Inclusion-Exclusion Method}: We will use inclusion-exclusion to find the probability of the complement, which is the event that she has at least one day with no classes. 
+        Let $B_i = A_i^c$ be the event that she has no classes on day $i$. 
+        Then 
+        \begin{equation*}
+            P(B_1 \cup B_2 \cdots \cup B_5) = \sum_i P(B_i) - \sum_{i < j} P(B_i \cap B_j) + \sum_{i < j < k} P(B_i \cap B_j \cap B_k). 
+        \end{equation*}
+        (terms with the intersection of 4 or more $B_i$'s are not needed since Alice must have classes on at least 2 days). 
+        We have 
+        \begin{equation*}
+            P(B_1) = \frac{\binom{24}{7}}{\binom{30}{7}}, P(B_1 \cap B_2) = \frac{\binom{18}{7}}{\binom{30}{7}}, P(B_1 \cap B_2 \cap B_3) = \frac{\binom{12}{7}}{\binom{30}{7}} 
+        \end{equation*}
+        and similarly for the other intersections. So 
+        \begin{equation*}
+            P(B_1 \cup B_2 \cdots \cup B_5) = \binom{5}{1} \frac{\binom{24}{7}}{\binom{30}{7}} - \binom{5}{2} \frac{\binom{18}{7}}{\binom{30}{7}} + \binom{5}{3} \frac{\binom{12}{7}}{\binom{30}{7}} = \frac{263}{377}. 
+        \end{equation*}
+        Therefore, by De Morgan's law and the first property of probability, 
+        \begin{equation*}
+            P(A_1 \cap A_2 \cap A_3 \cap A_4 \cap A_5) = 1 - P(B_1 \cup B_2 \cup B_3 \cup B_4 \cup B_5) = \frac{114}{377} \approx 0.302. 
+        \end{equation*}
+    \end{Solution}
+    \item%55
+    \subsection{Mixed practice} 
+    \item%56
+    \item%57
+    Take a deep breath before attempting this problem. 
+    In the book \textit{Innumeracy}, John Allen Paulos writes: 
+    \begin{center}
+        \begin{minipage}{\dimexpr\textwidth-8em\relax}
+        Now for better news of a kind of immortal persistence. 
+        First, take a deep breath. 
+        Assume Shakespeare's account is accurate and Julius Caesar gasped [``Et tu, Brute!''] before breathing his last. 
+        What are the chances you just inhaled a molecule which Caesar exhaled in his dying breath? 
+        \end{minipage}
+    \end{center}
+    Assume that one breath of air contains $10^{22}$ molecules, and that there are $10^{44}$ molecules in the atmosphere. 
+    (These are slightly simpler numbers than the estimates that Paulos gives; for the purposes of this problem, assume that these are exact. 
+    Of course, in reality there are many complications such as different types of molecules in the atmosphere, chemical reactions, variation in lung capacities, etc.) 
+
+    Suppose that the molecules in the atmosphere now are the same as those in the atmosphere when Caesar was alive, and that in the 2000 years or so since Caesar, these molecules have been scattered completely randomly through the atmosphere. 
+    Also assume that Caesar's last breath was sampled \textit{without} replacement but that your breathing is sampled \textit{with} replacement (without replacement makes more sense but with replacement is easier to work with, and is a good approximation since the number of molecules in the atmosphere is so much larger than the number of molecules in one breath). 
+
+    Find the probability that at least one molecule in the breath you just took was shared with Caesar's last breath, and give a simple approximation in terms of $e$. 
+
+    Hint: As discussed in the math appendix, $\left( 1 + \frac{x}{n} \right)^n \approx e^x$ for $n$ large. 
+    \begin{solution}
+        Let's count the complement: the probability that none of the $10^{22}$ molecules in your breath was shared with Caesar's last breath. 
+        This amounts to the probability of sampling $10^{22}$ molecules from the molecules that were not in Caesar's last breath (i.e., $10^{44} - 10^{22}$ molecules) without replacement, so the probability is 
+        \begin{equation*}
+            P(\text{not shared with Caesar's last breath}) = \frac{(10^{44} - 10^{22})^{10^{22}}}{(10^{44})^{10^{22}}} = \left( 1 - \frac{1}{10^{22}} \right)^{10^{22}}, 
+        \end{equation*}
+        and the probability that at least one molecule was shared with Caesar's last breath is 
+        \begin{equation*}
+            P(\text{at least one shared with Caesar's last breath}) = 1 - \left( 1 - \frac{1}{10^{22}} \right)^{10^{22}} \approx 1 - e^{-1}. 
+        \end{equation*}
+    \end{solution}
+    \item%58
+    \item%59
+    \item%60
+    Given $n \geq 2$ numbers $(a_1, a_2, \dots, a_n)$ with no repetitions, a \textit{bootstrap} sample is a sequence $(x_1, x_2, \dots, x_n)$ formed from the $a_j$'s by sampling with replacement with equal probabilities. 
+    Bootstrap samples arise in a widely used statistical method known as the \textit{bootstrap}. 
+    For example, if $n = 2$ and $(a1, a2) = (3, 1)$, then the possible bootstrap samples are $(3, 3), (3, 1), (1, 3)$, and $(1, 1)$. 
+    \ea{
+        \item 
+        How many possible bootstrap samples are there for $(a_1, \dots, a_n)$? 
+        \item 
+        How many possible bootstrap samples are there for $(a_1, \dots, a_n)$, if order does not matter (in the sense that it only matters how many times each $a_j$ was chosen, not the order in which they were chosen)? 
+        \item 
+        One random bootstrap sample is chosen (by sampling from $a_1, \dots, a_n$ with replacement, as described above). 
+        Show that not all unordered bootstrap samples (in the sense of (b)) are equally likely. 
+        Find an unordered bootstrap sample $\mathbf{b}_1$ that is as likely as possible, and an unordered bootstrap sample $\mathbf{b}_2$ that is as unlikely as possible. 
+        Let $p_1$ be the probability of getting $\mathbf{b}_1$ and $p_2$ be the probability of getting $\mathbf{b}_2$ (so $p_i$ is the probability of getting the specific unordered bootstrap sample $\mathbf{b}_i$). 
+        What is $p_1/p_2$? 
+        What is the ratio of the probability of getting an unordered bootstrap sample whose probability is $p_1$ to the probability of getting an unordered sample whose probability is $p_2$? 
+    }
+    \begin{solution}
+        \ea{
+            \item 
+            There are $n$ possibilities for the first slot, and $n$ for each of the others. 
+            So by the multiplication rule, there are $n^n$ possible bootstrap samples. 
+            \item 
+            We can solve it by solving an isomorphic problem. 
+            That is to find the number of ways to choose $n$ times from a set of $n$ objects with replacement, where the order doesn't matter. 
+            By the Bose-Einstein, we immediately obtain 
+            \begin{equation*}
+                \binom{n + n - 1}{n} = \binom{2n - 1}{n} \quad \text{ways}. 
+            \end{equation*}
+            To relate this result to the original problem, we can let each element $a_j$ in the given $(a_1, \dots, a_n)$ correspond to one of the $n$ objects and use the count of each $a_j$ as ``check marks'' to tally how many times each object is selected. 
+            For example, if a bootstrap sample contains exactly three 4's, that means the object corresponding to 4 was chosen exactly 3 times. 
+            The fact that the order of the chosen $a_j$ does not matter corresponds to the fact that we don't care about the order in which the objects are chosen. 
+            Thus, the answer to the original problem is also $\smash{\binom{2n-1}{n}}$. 
+            \item
+            \begin{Proof}
+                We first show that not all unordered bootstrap samples (in the sense of (b)) are equally likely. 
+                Consider two unordered bootstrap samples 
+                \begin{equation*}
+                    \mathbf{b}_a = (a_1, a_1, \dots, a_1) \quad \text{and} \quad \mathbf{b}_b = (a_1, a_2, \dots, a_n). 
+                \end{equation*}
+                The number of ordered sequences corresponding to $\mathbf{b}_a$ is 
+                \begin{equation*}
+                    \frac{n!}{n!} = 1,
+                \end{equation*}
+                since we can start with $n!$ and then adjust for overcounting, dividing by $n!$ to account for the fact that the $a_1$'s can be permuted among themselves in any way. 
+
+                Likewise, the number of ordered sequences corresponding to $\mathbf{b}_b$ is 
+                \begin{equation*}
+                \frac{n!}{1! \cdot 1! \cdots 1!} = n!, 
+                \end{equation*}
+                since every element here appears exactly once, so we only need to divide by $1!$ for each element to account for the fact that the $a_j$'s can be permuted in only one way, where $1 \leq j \leq n$. 
+
+                Since the two unordered bootstrap samples correspond to different numbers of ordered bootstrap samples, and each ordered bootstrap sample is equally likely, this shows that not all unordered bootstrap samples (in the sense of (b)) are equally likely. 
+            \end{Proof}
+            We now find an unordered bootstrap sample $\mathbf{b}_1$ that is as likely as possible, and an unordered bootstrap sample $\mathbf{b}_2$ that is as unlikely as possible, and then compute their probability ratio. 
+            For any bootstrap sample $\mathbf{b} = (\dots, a_j, \dots, a_j, \dots)$ in which an element $a_j$ appears $k$ times ($0 \leq k \leq n$), the number of ordered sequence corresponding to $\mathbf{b}$ is 
+            \begin{equation*}
+                \frac{n!}{\cdots k! \cdots}, 
+            \end{equation*}
+            since we can start with $n!$ and then adjust for overcounting, dividing by $k!$ to account for the fact that the $a_j$'s can be permuted among themselves in any way. 
+            Since $k! \geq 1$, the number of ordered sequences is maximized when $k!$ is minimized, and minimized when $k!$ is maximized. 
+
+            Thus, the most probable unordered sample $\mathbf{b}_1$ occurs when $k = 1$ for every element, so $k! = 1$ for all $j$. 
+            This gives 
+            \begin{equation*}
+                \mathbf{b}_1 = (a_1, a_2, \dots, a_n), 
+            \end{equation*}
+            so its probability is 
+            \begin{equation*}
+            \smash{p_1 = \frac{n!}{n^n}} 
+            \end{equation*}
+            by the result of the preceding proof. 
+
+            The least probable unordered sample $\mathbf{b}_2$ occurs when one element is chosen $n$ times and all others are not chosen, so $k! = n!$ for that chosen element. 
+            This gives 
+            \begin{equation*}
+                \mathbf{b}_2 = (a_j , a_j, \dots, a_j), 
+            \end{equation*}
+            where $1 \leq j \leq n$, so its probability is
+            \begin{equation*}
+                p_2 = \frac{1}{n^n}, 
+            \end{equation*}
+            by the result of the preceding proof. 
+
+            Therefore, the ratio of the probability of getting an unordered bootstrap sample whose probability is $p_1$ to the probability of getting an unordered sample whose probability is $p_2$ is 
+            \begin{equation*}
+                p_1/p_2 = \frac{n!/n^n}{1/n^n} = n!. 
+            \end{equation*}
+
+        }
+    \end{solution}
+    \item%61
+    \item%62
+    In the birthday problem, we assumed that all 365 days of the year are equally likely (and excluded February 29). 
+    In reality, some days are slightly more likely as birthdays than others. 
+    For example, scientists have long struggled to understand why more babies are born 9 months after a holiday. 
+    Let $\mathbf{p} = (p_1, p_2, \dots, p_{365})$ be the vector of birthday probabilities, with $p_j$ the probability of being born on the $j$th day of the year (February 29 is still excluded, with no offense intended to Leap Dayers). 
+
+    The $k$th \textit{elementary symmetric polynomial} in the variables $x_1, \dots, x_n$ is defined by 
+    \begin{equation*}
+        e_k (x_1, \dots, x_n) = \sum_{1 \leq j_1 < j_2 < \cdots < j_k \leq n} x_{j_1} \dots x_{j_k}. 
+    \end{equation*}
+    This just says to add up all of the $\binom{n}{k}$ terms we can get by choosing and multiplying $k$ of the variables. 
+    For example, $e_1(x_1, x_2, x_3) = x_1 + x_2 + x_3$, $e_2(x_1, x_2, x_3) = x_1x_2 + x_1x_3 + x_2x_3$, and $e_3(x_1, x_2, x_3) = x_1x_2x_3$. 
+
+    Now let $k \geq 2$ be the number of people. 
+    \ea{
+        \item 
+        Find a simple expression for the probability that there is at least one birthday match, in terms of $\mathbf{p}$ and an elementary symmetric polynomial. 
+        \item 
+        Explain intuitively why it makes sense that $P(\text{at least one birthday match})$ is minimized when $p_j = \frac{1}{365}$ for all $j$, by considering simple and extreme cases. 
+        \item 
+        The famous \textit{arithmetic mean-geometric mean inequality} says that for $x, y \geq 0$, 
+        \begin{equation*}
+            \frac{x + y}{2} \geq \sqrt{xy}. 
+        \end{equation*}
+        This inequality follows from adding $4xy$ to both sides of $x^2 - 2xy + y^2 = (x - y)^2 \geq 0$. 
+
+        Define $\mathbf{r} = (r_1, \dots, r_{365})$ by $r_1 = r_2 = (p_1 + p_2)/2$, $r_j = p_j$ for $3 \leq j \leq 365$. 
+        Using the arithmetic mean-geometric mean bound and the fact, which you should verify, that 
+        \begin{equation*}
+            \mbox{\small $e_k(x_1,\dots,x_n) = x_1x_2 e_{k-2}(x_3,\dots,x_n) + (x_1+x_2)e_{k-1}(x_3,\dots,x_n) + e_k(x_3,\dots,x_n),$} 
+        \end{equation*}
+        show that 
+        \begin{equation*}
+            P(\text{at least one birthday match}|\mathbf{p}) \geq P(\text{at least one birthday match}|\mathbf{r}), 
+        \end{equation*}
+        with strict inequality if $\mathbf{p} \neq \mathbf{r}$, where the ``given $\mathbf{r}$'' notation means that the birthday probabilities are given by $\mathbf{r}$. 
+        Using this, show that the value of $\mathbf{p}$ that minimizes the probability of at least one birthday match is given by $p_j = \frac{1}{365}$ for all $j$. 
+    }
+    \begin{solution}
+    \ea{
+        \item 
+        Instead of directly computing the probability that there is at least one birthday match, let's count the complement: the probability that we assign birthdays to $k$ people such that no two people share a birthday. 
+        We first choose $k$ distinct days from the 365 days of the year, and then assign each person to one of the $k$ chosen days. 
+        Therefore the probability of no birthday match is 
+        \begin{equation*}
+            P(\text{no birthday match}) = \sum_{1 \leq j_1 < j_2 < \cdots < j_k \leq 365} k! \cdot p_{j_1} \dots p_{j_k}  = k! \cdot e_k (\mathbf{p}), 
+        \end{equation*}
+        and the probability that there is at least one birthday match is 
+        \begin{equation*}
+            P(\text{at least one birthday match}) = 1 - k! \cdot e_k(\mathbf{p}). 
+        \end{equation*}
+        \item 
+        Intuitively, a birthday match occurs when people's birthdays cluster on the same day. 
+        The uniform distribution, where $p_j= 1/365$, spreads birthdays as uniformly as possible across the year, which minimizes clustering. 
+        Consider the extreme case where all probability is concentrated on a single day, so the probability that there is at least one birthday match equals 1. 
+        Any deviation from uniformity increases the chance of clustering on certain days, which increases the probability of a birthday match. 
+        Clustering is minimized exactly when the distribution is uniform, so the probability of at least one birthday match is minimized. 
+        \item 
+        We first verify the given identity for elementary symmetric polynomials. 
+        We can partition all of the $\smash{\binom{n}{k}}$ terms into three disjoint cases: 
+        \er{
+            \item 
+            In this case, we choose the terms that contain both $x_1$ and $x_2$. 
+            So we need to choose $k-2$ more variables from the remaining variables, i.e., $x_3, \dots, x_n$, which gives the factor $e_{k-2}(x_3, \dots, x_n)$. 
+            Thus, this case contributes the term $x_1x_2 e_{k-2}(x_3, \dots, x_n)$ to the given identity. 
+            \item 
+            In this case, we choose the terms that contain one of $x_1$ and $x_2$, but not both. 
+            So we need to choose $k-1$ more variables from the remaining variables, i.e., $x_3, \dots, x_n$, which gives the factor $e_{k-1}(x_3, \dots, x_n)$ for $x_1$ and $x_2$ respectively. 
+            Thus, this case contributes the term $(x_1 + x_2) e_{k-1}(x_3, \dots, x_n)$ to the given identity. 
+            \item 
+            In this case, we choose the terms that contain neither $x_1$ nor $x_2$. 
+            So we need to choose $k$ variables from $x_3, \dots, x_n$, which contributes the term $e_k(x_3, \dots, x_n)$ to the given identity. 
+        }
+        We have now verified the given identity for the elementary symmetric polynomials. 
+        We now show the desired inequality. 
+        From Part (a), the probability that there is at least one birthday match in terms of $\mathbf{p}$ and $\mathbf{r}$ is $1 - k! \cdot e_k (\mathbf{p})$ and $1 - k! \cdot e_k (\mathbf{r})$, respectively. 
+        The desired inequality implies that we need to show that $e_k (\mathbf{p}) \leq e_k (\mathbf{r})$. 
+        By the given identity for elementary symmetric polynomials, for $\mathbf{p}$, we have 
+        \begin{equation*}
+            \mbox{\small $e_k (\mathbf{p}) = p_1 p_2 e_{k-2}(p_3, \dots, p_{365}) + (p_1 + p_2) e_{k-1}(p_3, \dots, p_{365}) + e_k(p_3, \dots, p_{365}),$} 
+        \end{equation*}
+        For $\mathbf{r}$, we have
+        \begin{equation*}
+            \mbox{\small $e_k (\mathbf{r}) = r_1 r_2 e_{k-2}(r_3, \dots, r_{365}) + (r_1 + r_2) e_{k-1}(r_3, \dots, r_{365}) + e_k(r_3, \dots, r_{365}).$} 
+        \end{equation*}
+        Since $r_1 + r_2 = p_1 + p_2$ and $e_{k-2} (p_3, \dots, p_{365}) = e_{k-2} (r_3, \dots, r_{365})$, the last two terms cancel out, which gives 
+        \begin{equation*}
+            e_k (\mathbf{r}) - e_k (\mathbf{p}) = (r_1 r_2 - p_1 p_2) e_{k-2}. 
+        \end{equation*}
+        where $e_{k-2}$ is defined to be $e_{k-2} (p_3, \dots, p_{365})$ or $e_{k-2} (r_3, \dots, r_{365})$. 
+        By the arithmetic mean-geometric mean inequality, 
+        \begin{equation*}
+            r_1 r_2 = r_2^2 = \left( \frac{p_1 + p_2}{2} \right)^2 \geq p_1 p_2, 
+        \end{equation*}
+        with strict inequality if $p_1 \neq p_2$. Because $e_{k-2} \geq 0$, we have $e_k (\mathbf{r}) - e_k (\mathbf{p}) = (r_1 r_2 - p_1 p_2) e_{k-2} \geq 0$, which gives $e_k (\mathbf{p}) \leq e_k (\mathbf{r})$, thus we show 
+        \begin{equation*}
+            P(\text{at least one birthday match}|\mathbf{p}) \geq P(\text{at least one birthday match}|\mathbf{r}). 
+        \end{equation*}
+        For any non-uniform distribution $\mathbf{p}$, we can always find two unequal probabilities and replace them with their average, which strictly reduces the match probability. 
+        Repeating the method above for all pairs yields the uniform distribution $\mathbf{p}$, where $p_j = \frac{1}{365}$ for all $j$. 
+        Therefore, the uniform distribution $\mathbf{p}$ minimizes the probability of at least one birthday match. 
+    }
+    \end{solution}
+}

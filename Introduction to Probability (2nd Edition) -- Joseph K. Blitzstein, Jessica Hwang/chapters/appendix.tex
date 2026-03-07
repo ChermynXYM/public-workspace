@@ -1,0 +1,20 @@
+\section{Notes on Chapter 2}
+\subsection{Example 2.4.5 (Unanimous agreement) -- Part (c)}
+No. 
+Using Bayes' rule, we can calculate the probability that a systemic error occured, given that all judges voted to convict: 
+\begin{equation*}
+    P(B|U) = \frac{P(U|B)P(B)}{P(U)} = \frac{s}{p(s+(1-s)c^n) + (1-p)(s+(1-s)w^n)}, 
+\end{equation*}
+since a unanimous agreement is guaranteed when a systemic error occurs. 
+As $n$ grows, $P(B|U)$ increases and converges to $1$. 
+This means that, under the condition of a unanimous vote, a large value of $n$ yields a high chance of systemic error, and if a systemic error occurs then the judges' votes are uninformative about whether the suspect is guilty; they do not provide any evidence to update our prior belief. 
+Thus, the answer to (b) reverts to the prior probability $p$ as $n \to \infty$. 
+Since $c > w$, we have $c^n > w^n$, so for any positive integer $n$, 
+\begin{equation*}
+    P(G|U) = \frac{p(s+(1-s)c^n)}{p(s+(1-s)c^n)+(1-p)(s+(1-s)w^n)} > \frac{p}{p+(1-p)} = p. 
+\end{equation*}
+This shows that $P(G|U)$ starts above $p$ and decreases towards $p$ as $n$ increases, confirming that it is a decreasing function of $n$. 
+
+
+
+

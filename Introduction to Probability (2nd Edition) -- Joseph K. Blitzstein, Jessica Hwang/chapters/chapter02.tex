@@ -1,0 +1,180 @@
+\section{Exercises}
+Exercises marked with \oS have detailed solutions at \url{http://stat110.net}. 
+\en{
+    \subsection{Conditioning on evidence}
+    \item %01
+    \item %02
+    \item %03
+    \item %04
+    \item %05
+    \item %06
+    \item %07
+    \item %08
+    \item %09
+    \item %10
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item %29
+    A family has two children. 
+    Let $C$ be a characteristic that a child can have, and assume that each child has characteristic $C$ with probability $p$, independently of each other and of gender. 
+    For example, $C$ could be the characteristic ``born in winter'' as in Example 2.2.7. 
+    Under the assumptions of Example 2.2.5, show that the probability that both children are girls given that at least one is a girl with characteristic $C$ is $\frac{2-p}{4-p}$. 
+    Note that this is $1/3$ if $p = 1$ (agreeing with the first part of Example 2.2.5) and approaches $1/2$ from below as $p \to 0$ (agreeing with Example 2.2.7). 
+    \begin{solution}
+        By definition of conditional probability, 
+        \begin{equation*}
+            P(\text{both girls}|\text{at least one girl with} \ C) = \frac{P(\text{both girls}, \text{at least one girl with} \ C)}{P(\text{at least one girl with} \ C)}. 
+        \end{equation*}
+        Since the probability that a specific child is a girl with characteristic $C$ is $p/2$, the denominator equals 
+        \begin{equation*}
+            P(\text{at least one girl with} \ C) = 1 - (1 - p/2)^2. 
+        \end{equation*}
+        To compute the numerator, use the fact that ``both girls, at least one girl with $C$'' is the same event as ``both girls, at least one child with $C$''; then use the assumption that gender and the probability of having characteristic $C$ are independent: 
+        \begin{equation*}
+            \begin{aligned}
+                P(\text{both girls}, \text{at least one girl with} \ C) 
+                &= P(\text{both girls}, \text{at least one child with} \ C) \\
+                &= (1/4)P(\text{at least one child with} \ C) \\
+                &= (1/4)(1 - P(\text{both without} \ C)) \\
+                &= (1/4)(1 - (1 - p)^2). 
+            \end{aligned}
+        \end{equation*}
+        Thus, 
+        \begin{equation*}
+            P(\text{both girls}|\text{at least one girl with} \ C) = \frac{(1/4)(1 - (1 - p)^2)}{1 - (1 - p/2)^2} = \frac{2-p}{4-p}. 
+        \end{equation*}
+    \end{solution}
+    \subsection{Independence and conditional independence}
+    \item %30
+    \item %31
+    \item %32
+    \item %33
+    \item %34
+    \item %35
+    \item %36
+    \item %37
+    \item %38
+    \leavevmode
+    \subsection{Monty Hall}
+    \item %39
+    \ea{
+        \item[\llap{\oS\ (a)\kern -7pt}]
+        \hspace{0.5em} Consider the following 7-door version of the Monty Hall problem. 
+        There are 7 doors, behind one of which there is a car (which you want), and behind the rest of which there are goats (which you don't want). 
+        Initially, all possibilities are equally likely for where the car is. 
+        You choose a door. 
+        Monty Hall then opens 3 goat doors, and offers you the option of switching to any of the remaining 3 doors. 
+
+        Assume that Monty Hall knows which door has the car, will always open 3 goat doors and offer the option of switching, and that Monty chooses with equal probabilities from all his choices of which goat doors to open. 
+        Should you switch? 
+        What is your probability of success if you switch to one of the remaining 3 doors? 
+        \item[(b)]
+        Generalize the above to a Monty Hall problem where there are $n \geq 3$ doors, of which Monty opens $m$ goat doors, with $1 \leq m \leq n - 2$. 
+    }
+    \begin{Solution}
+        \ea{
+            \item 
+            Assume the doors are labeled such that you choose door 1 (to simplify notation), and suppose first that you follow the ``stick to your original choice'' strategy. 
+            Let $S$ be the event of success in getting the car, and let $C_j$ be the event that the car is behind door $j$. 
+            Conditioning on which door has the car, we have 
+            \begin{equation*}
+                P(S) = P(S|C_1)P(C_1) + \cdots + P(S|C_7)P(C_7) = P(C_1) = \frac{1}{7}. 
+            \end{equation*}
+            Let $M_{ijk}$ be the event that Monty opens doors $i, j, k$. 
+            Then 
+            \begin{equation*}
+                P(S) = \sum_{i, j, k} P(S|M_{ijk})P(M_{ijk}) 
+            \end{equation*}
+            (summed over all $i, j, k$ with $2 \leq i < j < k \leq 7$.) 
+            By symmetry, this gives 
+            \begin{equation*}
+                P(S|M_{ijk}) = P(S) = \frac{1}{7}
+            \end{equation*}
+            for all $i, j, k$ with $2 \leq i < j < k \leq 7$. 
+            Thus, the conditional probability that the car is behind 1 of the remaining 3 doors is $6/7$, which gives $2/7$ for each. 
+            So you should switch, thus making your probability of success $2/7$ rather than $1/7$. 
+            \item 
+            By the same reasoning, the probability of success for ``stick to your original choice'' is $\frac{1}{n}$, both unconditionally and conditionally. 
+            Each of the $n-m-1$ remaining doors has conditional probability $\smash{\frac{1}{n-m-1} \cdot \frac{n-1}{n} = \frac{n-1}{(n-m-1)n}}$ of having the car. 
+            This value is greater than $\frac{1}{n}$, so you should switch, thus obtaining probability $\smash{\frac{n-1}{(n-m-1)n}}$ of success (both conditionally and unconditionally). 
+        }
+    \end{Solution}
+    \item %40
+    \oS Consider the Monty Hall problem, except that Monty enjoys opening door 2 more than he enjoys opening door 3, and if he has a choice between opening these two doors, he opens door 2 with probability $p$, where $\frac{1}{2} \leq p \leq 1$. 
+
+    To recap: there are three doors, behind one of which there is a car (which you want), and behind the other two of which there are goats (which you don't want). 
+    Initially, all possibilities are equally likely for where the car is. 
+    You choose a door, which for concreteness we assume is door 1. 
+    Monty Hall then opens a door to reveal a goat, and offers you the option of switching. 
+    Assume that Monty Hall knows which door has the car, will always open a goat door and offer the option of switching, and as above assume that if Monty Hall has a choice between opening door 2 and door 3, he chooses door 2 with probability $p$ (with $\frac{1}{2} \leq p \leq 1$). 
+    \ea{
+        \item 
+        Find the unconditional probability that the strategy of always switching succeeds (unconditional in the sense that we do not condition on which of doors 2 or 3 Monty opens). 
+        \item 
+        Find the probability that the strategy of always switching succeeds, given that Monty opens door 2. 
+        \item 
+        Find the probability that the strategy of always switching succeeds, given that Monty opens door 3. 
+    }
+    \begin{Solution}
+        \ea{
+            \item 
+            Let $C_j$ be the event that the car is hidden behind door $j$ and let $W$ be the event that we win using the switching strategy. 
+            Using the law of total probability, we can find the unconditional probability of winning: 
+            \begin{equation*}
+                \begin{aligned}
+                    P(W) &= P(W|C_1)P(C_1) + P(W|C_2)P(C_2) + P(W|C_3)P(C_3) \\
+                    &= 0 \cdot 1/3 + 1 \cdot 1/3 + 1 \cdot 1/3 = 2/3. 
+                \end{aligned}
+            \end{equation*}
+            \item 
+            A tree method works well here (delete the paths which are no longer relevant after the conditioning, and reweight the remaining values by dividing by their sum), or we can use Bayes' rule and the law of total probability (as below). 
+
+            Let $D_i$ be the event that Monty opens Door $i$. 
+            Note that we are looking for $P(W|D_2)$, which is the same as $P(C_3|D_2)$ as we first choose Door 1 and then switch to Door 3. 
+            By Bayes' rule and the law of total probability, 
+            \begin{equation*}
+                \begin{aligned}
+                P(C_3|D_2) &= \frac{P(D_2|C_3)P(C_3)}{P(D_2)} \\
+                &= \frac{P(D_2|C_3)P(C_3)}{P(D_2|C_1)P(C_1) + P(D_2|C_2)P(C_2) + P(D_2|C_3)P(C_3)} \\
+                &= \frac{1 \cdot 1/3}{p \cdot 1/3 + 0 \cdot 1/3 + 1 \cdot 1/3} \\
+                &= \frac{1}{1+p}. 
+                \end{aligned}
+            \end{equation*}
+            \item 
+            The structure of the problem is the same as part (b) (except for the condition that $p \geq 1/2$, which was not needed above). 
+            Imagine repainting doors 2 and 3, reversing which is called which. 
+            By part (b) with $1-p$ in place of $p$, 
+            \begin{equation*}
+                \begin{aligned}
+                    P(C_2|D_3) &= \frac{P(D_3|C_2)P(C_2)}{P(D_3)} \\
+                    &= \frac{P(D_3|C_2)P(C_2)}{P(D_3|C_1)P(C_1) + P(D_3|C_2)P(C_2) + P(D_3|C_3)P(C_3)} \\
+                    &= \frac{1 \cdot 1/3}{(1-p) \cdot 1/3 + 1 \cdot 1/3 + 0 \cdot 1/3} \\
+                    &= \frac{1}{2-p}. 
+                \end{aligned}
+            \end{equation*}
+        }
+    \end{Solution}
+    \item %41
+    \item %42
+    \item %43
+    \item %44
+    \item %45
+    \item %46
+    \item %47
+}

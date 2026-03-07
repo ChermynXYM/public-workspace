@@ -61,10 +61,11 @@ please submit an issue or pull request via GitHub. Constructive feedback is welc
 | ✅ In Progress | *Introduction to Linear Algebra*     | Serge Lang         |                           |
 | ⏳ Planned     | *Introduction to Probability*        | Blitzstein & Hwang |                           |
 | ⏳ Planned     | *Understanding Analysis*             | Stephen Abbott     |                           |
-| ⏳ Planned     | *A Book of Abstract Algebra*         | Pinter             |                           |
-| ⏳ Planned     | *Principies of Mathematical Analysis*| Walter Rudin       | (commonly "Baby Rudin")   |
+| ⏳ Planned | *Psychology and Life* |  | |
+| ⏳ Planned     | *A Book of Abstract Algebra*         | Charles C. Pinter  |                           |
+| ⏳ Planned     | *Principles of Mathematical Analysis* | Walter Rudin       | (commonly "Baby Rudin")   |
 | ⏳ Planned     | *Linear Algebra*                     | Serge Lang         |                           |
 | ⏳ Planned     | *Undergraduate Algebra*              | Serge Lang         |                           |
-| ⏳ Planned     | *Algebra*                            | Michael Artin      |                           |
+| ⏳ Planned |                             |       |                           |
 
 > Suggestions for additional textbooks are welcome. Please open an issue to propose a title for future inclusion. 
